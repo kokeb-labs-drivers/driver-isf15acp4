@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="982" height="455" viewBox="0 0 982 455" role="img" aria-labelledby="chip-pinout-title chip-pinout-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-pinout-title">ISF15ACP4 pinout, Module</title>
+<desc id="chip-pinout-desc">Pinout of the ISF15ACP4 in Module, top view: 10 pins, each with its name, its electrical type as a colour and the driver hook that uses it.</desc>
+<rect x="0.5" y="0.5" width="981" height="454" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#7A360E">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#0E1726">ISF15ACP4 pinout, Module</text>
+<text x="32" y="103.8" font-size="15" fill="#566070">Top view, pin 1 marked. Colour is the pin's electrical type; the mono text outside is the port hook the driver uses for it.</text>
+<text x="32" y="125.5" font-size="15" fill="#566070">Datasheet: Block diagram and pin configurations (sheet E6), p. 3.</text>
+<rect x="32" y="141.6" width="918" height="1" fill="#E2E7EE"/>
+<rect x="361" y="179.6" width="260" height="214" rx="8" fill="#F5F7FA" stroke="#2B3442" stroke-width="2"/>
+<path d="M475 179.6 A16 16 0 0 0 507 179.6" fill="#FFFFFF" stroke="#2B3442" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="381" cy="199.6" r="6" fill="#2B3442"/>
+<rect x="331" y="208.6" width="30" height="20" rx="3" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<rect x="331" y="242.6" width="30" height="20" rx="3" fill="#FFEEF2" stroke="#DB2752" stroke-width="1.4"/>
+<rect x="331" y="276.6" width="30" height="20" rx="3" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="331" y="310.6" width="30" height="20" rx="3" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="331" y="344.6" width="30" height="20" rx="3" fill="#FFEEF2" stroke="#DB2752" stroke-width="1.4"/>
+<rect x="621" y="208.6" width="30" height="20" rx="3" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<rect x="621" y="242.6" width="30" height="20" rx="3" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="621" y="276.6" width="30" height="20" rx="3" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="621" y="310.6" width="30" height="20" rx="3" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="621" y="344.6" width="30" height="20" rx="3" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<text x="491" y="276.6" font-size="20" font-weight="700" text-anchor="middle" fill="#0E1726">ISF15ACP4</text>
+<text x="491" y="300.6" font-size="13" text-anchor="middle" fill="#566070">Module, top view</text>
+<text x="346" y="222.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#5B21B6">1</text>
+<text x="321" y="223.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#0E1726">SW1</text>
+<text x="276.3" y="222.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#566070">ReadSwitch()</text>
+<text x="346" y="256.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#9F1239">3</text>
+<text x="321" y="257.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#0E1726">VDD</text>
+<text x="346" y="290.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0B5F59">5</text>
+<text x="321" y="291.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#0E1726">RES</text>
+<text x="276.3" y="290.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#566070">GpioSet(CtrlPin::Reset)</text>
+<text x="346" y="324.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0B5F59">7</text>
+<text x="321" y="325.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#0E1726">SCK</text>
+<text x="276.3" y="324.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#566070">Write()</text>
+<text x="346" y="358.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#9F1239">9</text>
+<text x="321" y="359.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#0E1726">VCC</text>
+<text x="276.3" y="358.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#566070">GpioSet(CtrlPin::VccEnable)</text>
+<text x="636" y="222.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#5B21B6">2</text>
+<text x="661" y="223.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">SW2</text>
+<text x="636" y="256.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0B5F59">4</text>
+<text x="661" y="257.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">SS</text>
+<text x="705.7" y="256.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#566070">Write()</text>
+<text x="636" y="290.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0B5F59">6</text>
+<text x="661" y="291.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">DC</text>
+<text x="705.7" y="290.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#566070">Write(DataKind)</text>
+<text x="636" y="324.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0B5F59">8</text>
+<text x="661" y="325.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">SDI</text>
+<text x="705.7" y="324.9" font-size="12" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#566070">Write()</text>
+<text x="636" y="358.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#334155">10</text>
+<text x="661" y="359.6" font-size="14" font-weight="700" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" fill="#0E1726">GND</text>
+<rect x="32" y="408.9" width="14" height="14" rx="4" fill="#FFEEF2" stroke="#DB2752" stroke-width="1.4"/>
+<text x="54" y="420.6" font-size="12.5" fill="#566070">power</text>
+<rect x="117.6" y="408.9" width="14" height="14" rx="4" fill="#F1F4F8" stroke="#64748B" stroke-width="1.4"/>
+<text x="139.6" y="420.6" font-size="12.5" fill="#566070">ground</text>
+<rect x="208.5" y="408.9" width="14" height="14" rx="4" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<text x="230.5" y="420.6" font-size="12.5" fill="#566070">digital in</text>
+<rect x="306.9" y="408.9" width="14" height="14" rx="4" fill="#F3EEFF" stroke="#7C3AED" stroke-width="1.4"/>
+<text x="328.9" y="420.6" font-size="12.5" fill="#566070">digital in/out</text>
+</svg>
