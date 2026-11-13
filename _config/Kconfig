@@ -1,0 +1,71 @@
+# Kconfig for the ISF15ACP4 driver. The root CMakeLists.txt registers it with ESP-IDF
+# (idf_component_register(... KCONFIG _config/Kconfig)), so `idf.py menuconfig` shows
+# "ISF15ACP4 OLED pushbutton". The values reach the code only through
+# inc/isf15acp4_kconfig.hpp; no public driver signature uses them.
+menuconfig ISF15ACP4
+    bool "ISF15ACP4 OLED pushbutton"
+    default y
+    help
+      Defaults for isf15acp4::KconfigDefaults(). The driver itself does not
+      need Kconfig; outside ESP-IDF the same defaults come from Config{}.
+
+if ISF15ACP4
+
+choice ISF15ACP4_VARIANT
+    prompt "Module"
+    default ISF15ACP4_VARIANT_ISF15ACP4
+    help
+      Selects the geometry and the initialisation preset of the module.
+
+config ISF15ACP4_VARIANT_ISF15ACP4
+    bool "ISF15ACP4: 96 x 64, frameless pushbutton"
+config ISF15ACP4_VARIANT_ISC15ANP4
+    bool "ISC15ANP4: 64 x 48, pushbutton"
+config ISF15ACP4_VARIANT_ISC01P
+    bool "ISC01P: 52 x 36, display only"
+
+endchoice
+
+config ISF15ACP4_MASTER_CURRENT
+    int "Master current step (0 to 15, command 87h)"
+    range 0 15
+    default 15
+    help
+      Segment current in sixteenths of the maximum: step + 1 over 16.
+
+config ISF15ACP4_RED_ON_SEGMENT_A
+    bool "Segment group A carries red"
+    default y
+    help
+      Panel wiring. The NKK sheet and the datasheet examples drive A as red and C as blue; turn
+      this off only if the panel shows red and blue swapped.
+
+config ISF15ACP4_BUTTON_ACTIVE_LOW
+    bool "The closed switch pulls the pin low"
+    default y
+
+config ISF15ACP4_BUTTON_DEBOUNCE_MS
+    int "Switch debounce time (ms)"
+    range 1 1000
+    default 20
+    help
+      The NKK sheet gives no bounce time; this is the time a level must hold to count.
+
+config ISF15ACP4_BUTTON_LONG_PRESS_MS
+    int "Long-press time (ms)"
+    range 2 60000
+    default 800
+
+config ISF15ACP4_IDLE_DIM_MS
+    int "Dim the display after this idle time (ms, 0 = never)"
+    range 0 6000000
+    default 0
+
+config ISF15ACP4_IDLE_SLEEP_MS
+    int "Turn the display off after this idle time (ms, 0 = never)"
+    range 0 6000000
+    default 0
+    help
+      Must be larger than the dim time when both are set.
+
+endif

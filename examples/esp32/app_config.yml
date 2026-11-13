@@ -1,0 +1,49 @@
+---
+# ISF15ACP4 ESP32 examples: the app matrix read by the build scripts, the CI and the docs Examples page.
+version: "1.0"
+
+metadata:
+  project: "ESP32 ISF15ACP4 Driver Examples"
+  default_app: "isf15acp4_basic_example"
+  target: "esp32c6"
+  idf_versions: ["release/v5.5"]
+  build_types: [["Debug", "Release"]]
+
+apps:
+  isf15acp4_basic_example:
+    description: "Start the ISF15ACP4 from menuconfig values, draw a test picture and follow the button"
+    source_file: "isf15acp4_basic_example.cpp"
+    category: "example"
+    idf_versions: ["release/v5.5"]
+    build_types: ["Debug", "Release"]
+    ci_enabled: true
+    featured: true
+    hardware_required: true
+    features:
+      - "ESP-IDF write-only spi_master port with D/C, RES#, the OLED supply enable and the switch"
+      - "Config from Kconfig (menuconfig) through isf15acp4_kconfig.hpp"
+      - "Drawing engine, debounced button events, idle dim and sleep"
+      - "Every Result checked and logged by name"
+
+build_config:
+  build_types:
+    Debug:
+      description: "Debug build"
+      cmake_build_type: "Debug"
+      optimization: "-O0"
+      debug_level: "-g3"
+      defines: ["DEBUG"]
+    Release:
+      description: "Release build"
+      cmake_build_type: "Release"
+      optimization: "-O2"
+      debug_level: "-g0"
+      defines: ["NDEBUG"]
+  build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
+  project_name_pattern: "esp32_isf15acp4_{app_type}_app"
+
+ci_config:
+  timeout_minutes: 30
+  fail_fast: false
+  exclude_combinations: []
+  special_apps: []

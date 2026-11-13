@@ -1,0 +1,19 @@
+---
+# How this repository was made from kokeb-labs/driver-template. The template's drift check
+# (tools/scaffold.py --check-drift, CI: kokeb-labs/ci-tools ru-template-drift) scaffolds the template again
+# with these arguments and compares the files it manages. List a file under `local` only when it differs on
+# purpose, with the reason.
+template: unknown
+kind: "driver"
+name: "isf15acp4"
+bus: "spi"
+namespace: "isf15acp4"
+description: "C++20 driver for the NKK ISF15ACP4 frameless OLED pushbutton: a 96RGB x 64 SSD1331-class OLED on write-only SPI and a debounced SPST switch."
+include_root: null
+org: "kokeb-labs-drivers"
+repo: "driver-isf15acp4"
+author: "The driver-isf15acp4 authors"
+license: "MIT"
+datasheet: "https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf"
+platforms: [host, esp32]
+local: []

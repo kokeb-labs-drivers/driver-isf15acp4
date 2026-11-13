@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="971" height="876" viewBox="0 0 971 876" role="img" aria-labelledby="chip-outline-title chip-outline-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-outline-title">ISF15ACP4 package, Module</title>
+<desc id="chip-outline-desc">Outline of the ISF15ACP4 in Module drawn to scale from above: body 23.13 x 23.0 x 18.0 mm, pitch 4.0 mm, 10 pins.</desc>
+<rect x="0.5" y="0.5" width="970" height="875" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">ISF15ACP4 package, Module</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">Package body from above, to scale, pin 1 marked; arrows give the datasheet's dimensions. The pads are centred on</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">each side at the stated pitch: the land pattern is in the datasheet. Datasheet: Typical switch dimensions (sheet E6), p. 3.</text>
+<rect x="32" y="141.6" width="907" height="1" fill="#252F3C"/>
+<path d="M502.9 177.6 L548.9 177.6" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M502.9 477.6 L548.9 477.6" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M200.6 481.6 L200.6 527.5" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M498.9 481.6 L498.9 527.5" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M174.6 223.8 L148.6 223.8" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M174.6 275.7 L148.6 275.7" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M176.6 809 L522.9 809" fill="none" stroke="#6C7889" stroke-width="1.2"/>
+<path d="M502.9 575.5 L534.9 575.5" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<path d="M502.9 809 L534.9 809" fill="none" stroke="#6C7889" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="200.6" y="177.6" width="298.3" height="300" rx="8" fill="#18202B" stroke="#D2DAE4" stroke-width="2"/>
+<rect x="178.6" y="209.5" width="22" height="28.5" rx="2" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<rect x="178.6" y="261.4" width="22" height="28.5" rx="2" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="178.6" y="313.3" width="22" height="28.5" rx="2" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="178.6" y="365.2" width="22" height="28.5" rx="2" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="178.6" y="417" width="22" height="28.5" rx="2" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="498.9" y="209.5" width="22" height="28.5" rx="2" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<rect x="498.9" y="261.4" width="22" height="28.5" rx="2" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="498.9" y="313.3" width="22" height="28.5" rx="2" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="498.9" y="365.2" width="22" height="28.5" rx="2" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="498.9" y="417" width="22" height="28.5" rx="2" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<circle cx="214.6" cy="191.6" r="6" fill="#D2DAE4"/>
+<path d="M542.9 177.6 L542.9 477.6" fill="none" stroke="#D2DAE4" stroke-width="1.2"/>
+<path d="M542.9 177.6 L545.9 184.6 L539.9 184.6 Z" fill="#D2DAE4"/>
+<path d="M542.9 477.6 L539.9 470.6 L545.9 470.6 Z" fill="#D2DAE4"/>
+<path d="M200.6 521.5 L498.9 521.5" fill="none" stroke="#D2DAE4" stroke-width="1.2"/>
+<path d="M200.6 521.5 L207.6 518.5 L207.6 524.5 Z" fill="#D2DAE4"/>
+<path d="M498.9 521.5 L491.9 524.5 L491.9 518.5 Z" fill="#D2DAE4"/>
+<path d="M142.6 223.8 L142.6 275.7" fill="none" stroke="#D2DAE4" stroke-width="1.2"/>
+<path d="M142.6 223.8 L145.6 230.8 L139.6 230.8 Z" fill="#D2DAE4"/>
+<path d="M142.6 275.7 L139.6 268.7 L145.6 268.7 Z" fill="#D2DAE4"/>
+<rect x="200.6" y="575.5" width="298.3" height="233.5" rx="2" fill="#18202B" stroke="#D2DAE4" stroke-width="2"/>
+<path d="M528.9 575.5 L528.9 809" fill="none" stroke="#D2DAE4" stroke-width="1.2"/>
+<path d="M528.9 575.5 L531.9 582.5 L525.9 582.5 Z" fill="#D2DAE4"/>
+<path d="M528.9 809 L525.9 802 L531.9 802 Z" fill="#D2DAE4"/>
+<text x="189.6" y="227.9" font-size="11.5" font-weight="700" text-anchor="middle" fill="#DDD6FE">1</text>
+<text x="189.6" y="279.8" font-size="11.5" font-weight="700" text-anchor="middle" fill="#FECDD3">3</text>
+<text x="189.6" y="331.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#A7F3E6">5</text>
+<text x="189.6" y="383.6" font-size="11.5" font-weight="700" text-anchor="middle" fill="#A7F3E6">7</text>
+<text x="189.6" y="435.5" font-size="11.5" font-weight="700" text-anchor="middle" fill="#FECDD3">9</text>
+<text x="509.9" y="227.9" font-size="11.5" font-weight="700" text-anchor="middle" fill="#DDD6FE">2</text>
+<text x="509.9" y="279.8" font-size="11.5" font-weight="700" text-anchor="middle" fill="#A7F3E6">4</text>
+<text x="509.9" y="331.7" font-size="11.5" font-weight="700" text-anchor="middle" fill="#A7F3E6">6</text>
+<text x="509.9" y="383.6" font-size="11.5" font-weight="700" text-anchor="middle" fill="#A7F3E6">8</text>
+<text x="509.9" y="435.5" font-size="11.5" font-weight="700" text-anchor="middle" fill="#E2E8F0">10</text>
+<text x="349.8" y="319.6" font-size="20" font-weight="700" text-anchor="middle" fill="#E8EDF3">ISF15ACP4</text>
+<text x="349.8" y="341.6" font-size="13" text-anchor="middle" fill="#9AA6B5">Module</text>
+<text x="552.9" y="332.1" font-size="12.5" font-weight="600" fill="#D2DAE4">23.13 mm</text>
+<text x="349.8" y="539.5" font-size="12.5" font-weight="600" text-anchor="middle" fill="#D2DAE4">23.0 mm</text>
+<text x="132.6" y="254.2" font-size="12.5" font-weight="600" text-anchor="end" fill="#D2DAE4">pitch 4.0 mm</text>
+<text x="538.9" y="696.8" font-size="12.5" font-weight="600" fill="#D2DAE4">18.0 mm</text>
+<text x="186.6" y="696.8" font-size="12.5" text-anchor="end" fill="#9AA6B5">Side view</text>
+<text x="677.1" y="199.6" font-size="22" font-weight="700" fill="#E8EDF3">23.13 x 23.0 x 18.0 mm</text>
+<text x="677.1" y="227.6" font-size="13.5" fill="#9AA6B5">Module, 10 pins</text>
+<text x="677.1" y="249.6" font-size="13.5" fill="#9AA6B5">Leads reach out of the body</text>
+<text x="677.1" y="271.6" font-size="13.5" fill="#9AA6B5">Pitch 4.0 mm</text>
+<text x="677.1" y="293.6" font-size="13.5" fill="#9AA6B5">2 other packages: Module, Module</text>
+<rect x="32" y="830.4" width="14" height="14" rx="4" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="54" y="842" font-size="12.5" fill="#9AA6B5">power</text>
+<rect x="117.6" y="830.4" width="14" height="14" rx="4" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="139.6" y="842" font-size="12.5" fill="#9AA6B5">ground</text>
+<rect x="208.5" y="830.4" width="14" height="14" rx="4" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<text x="230.5" y="842" font-size="12.5" fill="#9AA6B5">digital in</text>
+<rect x="306.9" y="830.4" width="14" height="14" rx="4" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<text x="328.9" y="842" font-size="12.5" fill="#9AA6B5">digital in/out</text>
+</svg>

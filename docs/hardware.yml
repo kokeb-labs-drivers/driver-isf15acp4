@@ -1,0 +1,157 @@
+---
+# The module's hardware in one file: package, pins, the driver hook of each pin, the blocks inside and the reference
+# circuit. `kokeb-docs figures` draws the pinout, the package outline, the block diagram and the circuit from it,
+# `kokeb-docs gen` writes the chip card of the README and the tables of docs/hardware.md,
+# `kokeb-docs hardware --check` validates it. Schema: docs/chip-diagrams.md in kokeb-labs/ci-tools.
+#
+# The module has ten through-hole terminals in two rows of five (odd numbers in one row, even in the other: sheet E6).
+# Pins 1 and 2 are the two contacts of the SPST switch; pins 3 to 10 are the display (VDD, SS, RES, D/C, SCK, SDI, VCC,
+# GND). The sheet gives no pin-1 corner or row side, so the figure draws the odd row on the left. The module has no
+# MISO pin: the serial interface is write only.
+schema: 1
+chip: ISF15ACP4
+
+refs:
+  pinout: {doc: ds, section: "Block diagram and pin configurations (sheet E6)", page: 3}
+  supply: {doc: ds, section: "Recommended operating conditions (sheet E5)", page: 2}
+  switch: {doc: ds, section: "Switch specifications (sheet E5)", page: 2}
+  spi: {doc: ctl, section: "7.1.3 Serial Interface", page: 17}
+  timing: {doc: ctl, section: "12 AC Characteristics, Table 21", page: 57}
+  reset: {doc: ctl, section: "7.4 Reset Circuit", page: 19}
+  power: {doc: ctl, section: "7.9 Power ON and OFF Sequence", page: 27}
+  notes_power: {doc: notes, section: "Pin-outs (VDD, VCC); Design Considerations 1, Power Requirements VCC (16V)", page: 1}
+  pump: {doc: chpmp, section: "3. Pin Configurations (SHTDN)", page: 5}
+  blocks: {doc: ds, section: "Block diagram and pin configurations (sheet E6)", page: 3}
+  outline: {doc: ds, section: "Typical switch dimensions (sheet E6)", page: 3}
+  variant1: {doc: isc15, section: "Block diagram and pin configurations (sheet E6)", page: 3}
+  variant2: {doc: isc01, section: "Switch and OLED specifications (sheets E5, E6)", page: 2}
+
+package:
+  type: Module
+  layout: dual
+  pins: 10
+  sides:
+    left: [1, 3, 5, 7, 9]
+    right: [10, 8, 6, 4, 2]
+  ref: pinout
+  # The body from the typical switch dimensions: 23.13 x 23.0 mm, 18 mm high including the actuator (sheet E6). The
+  # terminal pitch is 7.62 mm between the rows and 4.0 mm along a row (the drawing's 16.0 mm over four spaces).
+  outline: {length_mm: 23.13, width_mm: 23.0, height_mm: 18.0, pitch_mm: 4.0, ref: outline}
+  variants:
+    - {id: isc15anp4, type: Module, pins: 10, size: "64 x 48 pixels", ordering: "ISC15ANP4",
+       note: "pushbutton with a smaller display, the same 10 pins; VCC 15 V to 17 V; its column offset and init values are in PresetFor()",
+       ref: variant1}
+    - {id: isc01p, type: Module, pins: 8, size: "52 x 36 pixels", ordering: "ISC01P",
+       note: "display only, 8 pins (VDD, SS, RES, D/C, SCK, SDI, VCC, GND); VCC 15 V to 17 V; no switch (HasSwitch() is false)",
+       ref: variant2}
+
+supply:
+  - {name: VDD, min_v: 2.4, max_v: 3.5, ref: supply}
+  # ISF15ACP4: 14 / 15 / 16 V (sheet E5). ISC15ANP4 and ISC01P: 15 / 16 / 17 V (their sheets E9, E11). Absolute
+  # maximum 19 V on all three. The NKK application notes give 15 V to 17 V and a 16 V charge pump for the whole
+  # family; the range below is the ISF15ACP4's own sheet (the narrower and safer one); the variants' ranges and the
+  # difference are in docs/hardware.md.
+  - {name: VCC, min_v: 14.0, max_v: 16.0, ref: supply}
+  - {name: "VCC (ISC15ANP4, ISC01P)", min_v: 15.0, max_v: 17.0, ref: supply}
+
+hooks:
+  - {id: write, call: "Write()", kind: spi, source: inc/isf15acp4_spi_interface.hpp, symbol: Write}
+  - {id: dc, call: "Write(DataKind)", kind: gpio-out, source: inc/isf15acp4_spi_interface.hpp, symbol: DataKind}
+  - {id: reset, call: "GpioSet(CtrlPin::Reset)", kind: gpio-out, source: inc/isf15acp4_spi_interface.hpp,
+     symbol: Reset}
+  - {id: vcc, call: "GpioSet(CtrlPin::VccEnable)", kind: gpio-out, source: inc/isf15acp4_spi_interface.hpp,
+     symbol: VccEnable}
+  - {id: switch, call: "ReadSwitch()", kind: gpio-in, source: inc/isf15acp4.hpp, symbol: ReadSwitch}
+
+pins:
+  - {number: 1, name: SW1, type: digital-io, domain: GND,
+     function: "Switch contact, normally open: closed to SW2 while the actuator is pushed", hook: switch,
+     unused: "Leave open (the switch is not used)", ref: switch}
+  - {number: 2, name: SW2, type: digital-io, domain: GND,
+     function: "Switch contact, normally open; usually to ground, SW1 to an MCU input with a pull-up",
+     unused: "Leave open (the switch is not used)", ref: switch}
+  - {number: 3, name: VDD, type: power, domain: VDD, function: "Logic supply, 2.4 V to 3.5 V (typical 2.8 V)",
+     ref: supply}
+  - {number: 4, name: SS, type: digital-in, domain: VDD, function: "SPI slave select, active low (CS#)", hook: write,
+     ref: spi}
+  - {number: 5, name: RES, type: digital-in, domain: VDD,
+     function: "Reset, active low: while low the controller initialises", hook: reset, ref: reset}
+  - {number: 6, name: DC, type: digital-in, domain: VDD,
+     function: "Data/command: low = command, high = pixel data", hook: dc, ref: spi}
+  - {number: 7, name: SCK, type: digital-in, domain: VDD, function: "SPI clock, 150 ns minimum cycle (6.6 MHz)",
+     hook: write, ref: timing}
+  - {number: 8, name: SDI, type: digital-in, domain: VDD, function: "SPI data in (MOSI); there is no data out",
+     hook: write, ref: spi}
+  - {number: 9, name: VCC, type: power, domain: VCC,
+     function: "OLED drive supply, 14 V to 16 V, typical 15 V (ISC15ANP4: 15 V to 17 V, typical 16 V; NKK notes: 15 V to 17 V, 16 V pump), external; enabled only after the controller is configured; never below VDD",
+     hook: vcc, ref: notes_power}
+  - {number: 10, name: GND, type: ground, domain: GND, function: Ground, ref: pinout}
+
+block_diagram:
+  ref: blocks
+  blocks:
+    - {id: mcu, label: MCU interface, detail: "serial, write only", at: [0, 0], tone: blue,
+       pins: [SS, SCK, SDI, DC]}
+    - {id: cmd, label: Command decoder, detail: "Table 10", at: [1, 0]}
+    - {id: ram, label: Display RAM, detail: "96 x 64 x 16 bit", at: [2, 0], tone: teal}
+    - {id: por, label: Reset and power, detail: "RES#, VDD, VCC, GND", at: [0, 1], tone: slate,
+       pins: [RES, VDD, VCC, GND]}
+    - {id: osc, label: Oscillator and timing, detail: "display clock", at: [1, 1]}
+    - {id: gray, label: Gray scale decoder, detail: "65k colours", at: [2, 1]}
+    - {id: sw, label: SPST switch, detail: "normally open", at: [0, 2], tone: amber, pins: [SW1, SW2]}
+    - {id: drive, label: SEG/COM driving block, detail: "96 RGB x 64", at: [1, 2]}
+    - {id: panel, label: Colour OLED panel, detail: "passive matrix", at: [2, 2], tone: teal}
+  links:
+    - {from: mcu, to: cmd, label: commands}
+    - {from: mcu, to: ram, label: pixels}
+    - {from: ram, to: gray, label: data}
+    - {from: osc, to: drive, label: timing}
+    - {from: gray, to: drive, label: levels}
+    - {from: drive, to: panel, label: SEG/COM}
+    - {from: por, to: cmd, label: reset}
+
+circuits:
+  - id: typical
+    title: Typical application
+    description: >-
+      The module on an MCU's SPI bus (write only), with D/C#, RES# and the enable of the OLED supply on GPIOs the
+      driver drives through Write() and GpioSet(), and the switch on an input with a pull-up that ReadSwitch() reads.
+      The supply is VCC 14 V to 16 V on the ISF15ACP4 and 15 V to 17 V on the ISC15ANP4 and ISC01P (the ISC01P has 8
+      pins and no switch: see the variants table). The OLED supply is a charge pump whose shut-down input is the enable:
+      high is on, low floats the output; the IS-CHPMP has no pull-down on that input, so add one.
+    ref: power
+    parts:
+      - {id: U1, kind: chip}
+      - id: U2
+        kind: mcu
+        label: MCU
+        pins:
+          - {name: SCK, label: SPI SCK}
+          - {name: MOSI, label: SPI MOSI}
+          - {name: CS, label: GPIO / CS}
+          - {name: DC, label: GPIO}
+          - {name: RST, label: GPIO}
+          - {name: VEN, label: GPIO}
+          - {name: BTN, label: GPIO (input)}
+          - VDD
+          - GND
+      - id: J1
+        kind: connector
+        label: "OLED supply"
+        pins:
+          - {name: VOUT, label: "VCC"}
+          - {name: EN, label: Enable}
+          - GND
+      - {id: R1, kind: resistor, value: 10 kΩ}
+      - {id: R2, kind: resistor, value: 100 kΩ}
+    nets:
+      - {name: "+3V3", kind: supply, nodes: [U1.VDD, U2.VDD, R1.1]}
+      - {name: "+15V", kind: supply, nodes: [U1.VCC, J1.VOUT]}
+      - {name: GND, kind: ground, nodes: [U1.GND, U1.SW2, U2.GND, J1.GND, R2.2]}
+      - {name: SCK, nodes: [U1.SCK, U2.SCK]}
+      - {name: SDI, nodes: [U1.SDI, U2.MOSI]}
+      - {name: SS, nodes: [U1.SS, U2.CS]}
+      - {name: DC, nodes: [U1.DC, U2.DC]}
+      - {name: RES, nodes: [U1.RES, U2.RST]}
+      - {name: VEN, nodes: [U2.VEN, J1.EN, R2.1]}
+      - {name: BTN, nodes: [U1.SW1, R1.2, U2.BTN]}
