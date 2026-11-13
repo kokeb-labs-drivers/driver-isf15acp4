@@ -1,0 +1,272 @@
+---
+# The vendor documents this driver was written against (handbook ADR-0019), and where the driver relies on them.
+# Never commit a PDF: `sha256` identifies the exact file that was used, so a reader can confirm they hold the same
+# revision.
+#
+# The module's sheet (`ds`) does not print a document number or a revision, only the page footer E4 to E9 and the date
+# 10/03/19, and it does not name the display controller. The controller's own datasheet (`ctl`) is the SSD1331 of
+# Solomon Systech, Rev 1.2 of November 2007. The copy this driver was written against came from the Adafruit mirror:
+# the manufacturer's page lists the part but links no PDF, and the mirror file's hash is recorded here. That the
+# module's controller is an SSD1331 is not stated in the NKK sheet; NKK's application notes (`notes`) state it ("All OLED
+# modules incorporate the same OLED controller (SSD1331)"). The application notes and the engineering-kit manual are
+# web pages (docs.nkkswitches.com), not PDFs: `sha256` is the hash of the HTML file as saved on the `retrieved` date, the vendor
+# does not print a revision or a date on them, and the page may change, so a reader who needs the same text compares
+# hashes. The charge-pump manual is a PDF that NKK links from those pages; the exact URL of the copy used was not
+# recorded, so its `url` is the application notes page that describes the pumps.
+#
+# The README card, docs/datasheet.md and the "Datasheet" box on each page are generated from this file by
+# tools/docs/generators/datasheet.py (`kokeb-docs gen`). Section names and printed page numbers are the documents' own;
+# for the NKK sheet `page` counts the six pages of the PDF (E4 is page 1).
+documents:
+  - id: ds
+    vendor: NKK Switches
+    title: Frameless OLED Pushbutton ISF15ACP4
+    kind: Datasheet
+    number: ISF15ACP4_FramelessOLED (sheets E4 to E9, no number printed)
+    revision: "none printed"
+    date: 2019-10-03
+    url: https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf
+    pdf: https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf
+    page_offset: 0
+    sha256: "e40cda1fb071caa5660a0884b0213fe81689ee7f9c7266b0b311ca21a72cc06b"
+  - id: ctl
+    vendor: Solomon Systech (copy from the Adafruit mirror)
+    title: SSD1331 96RGB x 64 Dot Matrix OLED/PLED Segment/Common Driver with Controller
+    kind: Datasheet
+    number: SSD1331
+    revision: "1.2"
+    date: "Nov 2007"
+    url: https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf
+    pdf: https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf
+    page_offset: 0
+    sha256: "8477a4e837bca1909cd27e76b3d97669a10905b81bf078adfaec602629a6db0b"
+  - id: isc15
+    vendor: NKK Switches
+    title: Frameless OLED Pushbutton ISC15ANP4 (variant, 64 x 48)
+    kind: Datasheet
+    number: ISC15ANP4 (sheets E4 to E9, no number printed)
+    revision: "none printed"
+    date: 2019-10-03
+    url: https://www.nkkswitches.com/pdf/ISC15ANP4.pdf
+    pdf: https://www.nkkswitches.com/pdf/ISC15ANP4.pdf
+    page_offset: 0
+    sha256: "8c4a595ea9e1a924796523068705331fa93568cc064d7f7783d5755e7829c585"
+  - id: isc01
+    vendor: NKK Switches
+    title: OLED module ISC01P (variant, 52 x 36, display only)
+    kind: Datasheet
+    number: ISC01P (sheets E4 to E9, no number printed)
+    revision: "none printed"
+    date: 2019-10-03
+    url: https://www.nkkswitches.com/pdf/ISC01P.pdf
+    pdf: https://www.nkkswitches.com/pdf/ISC01P.pdf
+    page_offset: 0
+    sha256: "c150752764d7a4a4321684a7bd87128526eb6a22f6117be6a1ebdf2214f2e27d"
+  - id: notes
+    vendor: NKK Switches
+    title: Application Notes for the OLED Color SmartDisplay (web page)
+    kind: Application note
+    number: "OLED application notes"
+    revision: "none printed (web page)"
+    date: "not printed"
+    url: https://docs.nkkswitches.com/docs/application-notes/oled-application-notes/
+    pdf: null
+    page_offset: 0
+    retrieved: "2026-11-12"
+    sha256: "025a091dfb89163b13cc94384af2689153abea9b72fb315b8430e7f723151954"
+  - id: chpmp
+    vendor: NKK Switches
+    title: IS-CHPMP and IS-CHPMPHP charge pump manual
+    kind: Application note
+    number: "IS-CHPMP and IS-CHPMPHP Manual"
+    revision: "C"
+    date: "0617 (as printed on every page)"
+    url: https://docs.nkkswitches.com/docs/application-notes/oled-application-notes/
+    pdf: null
+    page_offset: 0
+    retrieved: "2026-11-12"
+    sha256: "f3d0bb690e069662f479b1966fa3d29eaaebf6a6fe1cefbf00bc429f9f2307b2"
+  - id: kit
+    vendor: NKK Switches
+    title: OLED Engineering Kits User Manual (web page)
+    kind: Application note
+    number: "OLED engineering kits"
+    revision: "none printed (web page)"
+    date: "not printed"
+    url: https://docs.nkkswitches.com/docs/engineering-kits/oled-engineering-kits-user-manual/
+    pdf: null
+    page_offset: 0
+    retrieved: "2026-11-12"
+    sha256: "09b68d431d11536ecde6306f6900c3a663b802a7154141d72dc28182164f656c"
+
+# One row per thing the driver takes from a document: the datasheet's own section names and printed page
+# numbers, the driver API that implements it, and the docs pages that explain it (file names in docs/).
+topics:
+  - topic: Module pins, switch contacts and block diagram
+    doc: ds
+    section: Block diagram and pin configurations (sheet E6)
+    page: 3
+    driver: "`CtrlPin`, `DataKind`, `ReadSwitch()` hook"
+    docs: [hardware, quickstart]
+  - topic: Supply voltages, current and the three power states
+    doc: ds
+    section: Recommended operating conditions (sheets E5, E7)
+    page: 2
+    driver: "`EnsureInitialized()`, `DisplayOn()`, `DisplayOff()`, `Deinitialize()`, `IsSupplyEnabled()`"
+    docs: [hardware, contract, architecture]
+  - topic: Switch circuit and contact data
+    doc: ds
+    section: Switch specifications (sheet E5)
+    page: 2
+    driver: "`ButtonConfig`, `ButtonDebouncer`, `Poll()`"
+    docs: [api-guide, configuration, ambiguities]
+  - topic: Serial interface framing, D/C# and chip select
+    doc: ctl
+    section: 7.1.3 Serial Interface
+    page: 17
+    driver: "`SpiInterface`, `SpiPort`, `DataKind`, `kSpiMode`, `kMsbFirst`, `kContinuousWord`"
+    docs: [hardware, porting, architecture, limitations]
+  - topic: Serial interface timing
+    doc: ctl
+    section: 12 AC Characteristics, Table 21
+    page: 57
+    driver: "`kMaxClockHz`, `kCsSetupNs`, `kCsHoldNs`, `kDcSetupNs`, `kDcHoldNs`"
+    docs: [hardware, porting]
+  - topic: Reset circuit and reset pulse
+    doc: ctl
+    section: 7.4 Reset Circuit; 12 AC Characteristics, Table 18
+    page: 19
+    driver: "`CtrlPin::Reset`, `reg::kResetPulseMinUs`, `EnsureInitialized()`"
+    docs: [hardware, contract]
+  - topic: GDDRAM and colour depth
+    doc: ctl
+    section: 7.5 Graphic Display Data RAM; Table 9
+    page: 20
+    driver: "`ColorDepth`, `Present()`, `WriteWindow()`, `FillWindow()`, `SetPixel()`"
+    docs: [api-guide, architecture]
+  - topic: Gray scale decoder
+    doc: ctl
+    section: 7.6 Gray Scale Decoder
+    page: 21
+    driver: "`SetGrayScaleTable()`, `UseLinearGrayScale()`"
+    docs: [api-guide, configuration]
+  - topic: Power on and off sequence
+    doc: ctl
+    section: 7.9 Power ON and OFF Sequence
+    page: 27
+    driver: "`EnsureInitialized()`, `DisplayOn()`, `DisplayOff()`, `Deinitialize()`, `Config::vcc_settle_ms`, `Config::vcc_off_ms`"
+    docs: [contract, hardware, architecture, ambiguities, limitations]
+  - topic: Command table and parameter counts
+    doc: ctl
+    section: 8 Command Table, Table 10
+    page: 28
+    driver: "`inc/isf15acp4_registers.hpp`, `TraceCommand()`, `detail::ParameterCount()`"
+    docs: [architecture, api-guide]
+  - topic: Column and row window
+    doc: ctl
+    section: 9.1.1 Set Column Address; 9.1.2 Set Row Address
+    page: 35
+    driver: "`WriteWindow()`, `FillWindow()`"
+    docs: [api-guide]
+  - topic: Contrast, master current and second pre-charge speed
+    doc: ctl
+    section: 9.1.3 to 9.1.5
+    page: 36
+    driver: "`SetContrast()`, `SetMasterCurrent()`, `SetPrechargeSpeed()`, `Config::contrast_a`"
+    docs: [configuration, api-guide]
+  - topic: Re-map and data format
+    doc: ctl
+    section: 9.1.6 Set Re-map and Data Format (A0h)
+    page: 37
+    driver: "`Remap`, `SetRemap()`, `Config::red_on_segment_a`"
+    docs: [configuration, ambiguities]
+  - topic: Display start line, offset, mode and multiplex ratio
+    doc: ctl
+    section: 9.1.7 to 9.1.10
+    page: 42
+    driver: "`SetStartLine()`, `SetDisplayOffset()`, `SetDisplayMode()`, `SetMultiplexRatio()`"
+    docs: [configuration, api-guide]
+  - topic: Dim mode, master configuration and display on and off
+    doc: ctl
+    section: 9.1.11 to 9.1.13
+    page: 45
+    driver: "`SetDimSettings()`, `DisplayDim()`, `DisplayOn()`, `DisplayOff()`"
+    docs: [api-guide, contract]
+  - topic: Power save, phase periods, clock and pre-charge
+    doc: ctl
+    section: 9.1.14 to 9.1.20
+    page: 46
+    driver: "`SetPowerSave()`, `SetPhasePeriods()`, `SetClock()`, `SetPrechargeLevel()`, `SetVcomh()`"
+    docs: [configuration]
+  - topic: Command lock
+    doc: ctl
+    section: 9.1.22 Set Command Lock (FDh)
+    page: 47
+    driver: "`SetCommandLock()`, `Error::Locked`"
+    docs: [api-guide, contract]
+  - topic: Drawing engine
+    doc: ctl
+    section: 9.2.1 to 9.2.6 Graphic Acceleration Command Set
+    page: 48
+    driver: "`DrawLine()`, `DrawRectangle()`, `FillRectangle()`, `CopyWindow()`, `DimWindow()`, `ClearWindow()`, `Config::engine_settle_us`"
+    docs: [api-guide, ambiguities]
+  - topic: Continuous scrolling
+    doc: ctl
+    section: 9.2.7 to 9.2.9 Scrolling
+    page: 51
+    driver: "`SetupScroll()`, `ActivateScroll()`, `DeactivateScroll()`, `Error::ScrollActive`"
+    docs: [api-guide, troubleshooting]
+  - topic: Variant geometry and column offsets
+    doc: isc15
+    section: Block diagram and pin configurations (sheet E6)
+    page: 3
+    driver: "`Variant::Isc15anp4`, `GeometryOf()`, `PresetFor()`"
+    docs: [configuration, ambiguities]
+  - topic: Display-only variant
+    doc: isc01
+    section: Switch and OLED specifications (sheets E5, E6)
+    page: 2
+    driver: "`Variant::Isc01p`, `HasSwitch()`"
+    docs: [configuration, ambiguities]
+  - topic: Start-up values of each module
+    doc: notes
+    section: Initialization, Tables 1 to 3, steps 4.1 to 4.18 (Note 1, Note 2)
+    page: 1
+    driver: "`Config`, `PresetFor()`, `Config::send_precharge_speeds`, `Config::precharge_bit0`"
+    docs: [configuration, ambiguities, hardware]
+  - topic: Supplies, VCC order and the charge pump
+    doc: notes
+    section: Pin-outs; Design Considerations 1, Power Requirements VCC (16V); Part Numbers
+    page: 1
+    driver: "`CtrlPin::VccEnable`, `EnsureInitialized()`, `Deinitialize()`, `IsSupplyEnabled()`"
+    docs: [hardware, contract]
+  - topic: Charge pump shut-down input
+    doc: chpmp
+    section: 3. Pin Configurations
+    page: 5
+    driver: "`CtrlPin::VccEnable`"
+    docs: [hardware, limitations]
+  - topic: Communication, SCK frequency and chip select
+    doc: notes
+    section: Design Considerations 2 and 5
+    page: 1
+    driver: "`SpiInterface`, `kMaxClockHz`, `Write()`"
+    docs: [hardware, porting, ambiguities]
+  - topic: Memory window of each module
+    doc: notes
+    section: Specifying a Memory Window for Downloading
+    page: 1
+    driver: "`GeometryOf()`, `Geometry`"
+    docs: [hardware, ambiguities]
+  - topic: Dim mode, power-down and scrolling rules
+    doc: notes
+    section: Display Commands Available; Scrolling (Screensaver), Table 4
+    page: 1
+    driver: "`SetDimSettings()`, `SetContrast()`, `SetupScroll()`, `ActivateScroll()`, `DisplayOff()`"
+    docs: [api-guide, ambiguities]
+  - topic: Charge pump enable wiring in the kit
+    doc: kit
+    section: Hardware Considerations
+    page: 1
+    driver: "`CtrlPin::VccEnable`"
+    docs: [hardware]

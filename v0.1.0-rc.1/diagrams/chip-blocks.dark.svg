@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="693" viewBox="0 0 1200 693" role="img" aria-labelledby="chip-blocks-title chip-blocks-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-blocks-title">Inside the ISF15ACP4</title>
+<desc id="chip-blocks-desc">Block diagram of the ISF15ACP4: its function blocks, how they connect and which package pins reach each block.</desc>
+<defs><marker id="fk-arrow-rail" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6C7889"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="692" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="44" font-size="12.5" font-weight="700" letter-spacing="1.2" fill="#F8D27A">HARDWARE</text>
+<text x="32" y="77.3" font-size="26" font-weight="700" fill="#E8EDF3">Inside the ISF15ACP4</text>
+<text x="32" y="103.8" font-size="15" fill="#9AA6B5">Function blocks and their links, from the datasheet's block diagram (Block diagram and pin configurations (sheet E6), p. 3). Pins on the edge carry their</text>
+<text x="32" y="125.5" font-size="15" fill="#9AA6B5">package number.</text>
+<rect x="32" y="141.6" width="1136" height="1" fill="#252F3C"/>
+<rect x="120" y="159.6" width="1016" height="472" rx="14" fill="#1B232E" stroke="#3A4656" stroke-width="1.2"/>
+<path d="M127 239.6 L160 239.6" fill="none" stroke="#2BB3A3" stroke-width="1.8"/>
+<path d="M127 263.6 L160 263.6" fill="none" stroke="#2BB3A3" stroke-width="1.8"/>
+<path d="M127 287.6 L160 287.6" fill="none" stroke="#2BB3A3" stroke-width="1.8"/>
+<path d="M127 311.6 L160 311.6" fill="none" stroke="#2BB3A3" stroke-width="1.8"/>
+<path d="M127 391.6 L160 391.6" fill="none" stroke="#2BB3A3" stroke-width="1.8"/>
+<path d="M127 415.6 L160 415.6" fill="none" stroke="#FB7185" stroke-width="1.8"/>
+<path d="M127 439.6 L160 439.6" fill="none" stroke="#FB7185" stroke-width="1.8"/>
+<path d="M127 463.6 L160 463.6" fill="none" stroke="#94A3B8" stroke-width="1.8"/>
+<path d="M127 551.5 L160 551.5" fill="none" stroke="#A78BFA" stroke-width="1.8"/>
+<path d="M127 575.5 L160 575.5" fill="none" stroke="#A78BFA" stroke-width="1.8"/>
+<path d="M396 271.6 L508 271.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M396 303.6 L402 303.6 Q408 303.6 408 309.6 L408 335.6 Q408 343.6 416 343.6 L840 343.6 Q848 343.6 848 335.6 L848 309.6 Q848 303.6 854 303.6 L860 303.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M976 331.6 L976 371.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M624 483.6 L624 523.5" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M860 431.6 L854 431.6 Q848 431.6 848 437.6 L848 551.5 Q848 559.5 840 559.5 L748 559.5" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M748 583.5 L860 583.5" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<path d="M396 423.6 L488 423.6 Q496 423.6 496 415.6 L496 309.6 Q496 303.6 502 303.6 L508 303.6" fill="none" stroke="#6C7889" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-rail)"/>
+<rect x="160" y="223.6" width="232" height="104" rx="10" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="160" y="231.6" width="4" height="88" rx="2" fill="#60A5FA"/>
+<rect x="512" y="223.6" width="232" height="104" rx="10" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<rect x="512" y="231.6" width="4" height="88" rx="2" fill="#F4B942"/>
+<rect x="864" y="223.6" width="232" height="104" rx="10" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="864" y="231.6" width="4" height="88" rx="2" fill="#2BB3A3"/>
+<rect x="160" y="375.6" width="232" height="104" rx="10" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="160" y="383.6" width="4" height="88" rx="2" fill="#94A3B8"/>
+<rect x="512" y="375.6" width="232" height="104" rx="10" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<rect x="512" y="383.6" width="4" height="88" rx="2" fill="#F4B942"/>
+<rect x="864" y="375.6" width="232" height="104" rx="10" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<rect x="864" y="383.6" width="4" height="88" rx="2" fill="#F4B942"/>
+<rect x="160" y="527.5" width="232" height="72" rx="10" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="160" y="535.5" width="4" height="56" rx="2" fill="#FBBF24"/>
+<rect x="512" y="527.5" width="232" height="72" rx="10" fill="#2A2113" stroke="#F4B942" stroke-width="1.4"/>
+<rect x="512" y="535.5" width="4" height="56" rx="2" fill="#F4B942"/>
+<rect x="864" y="527.5" width="232" height="72" rx="10" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="864" y="535.5" width="4" height="56" rx="2" fill="#2BB3A3"/>
+<rect x="113" y="232.6" width="14" height="14" rx="3" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="113" y="256.6" width="14" height="14" rx="3" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="113" y="280.6" width="14" height="14" rx="3" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="113" y="304.6" width="14" height="14" rx="3" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="113" y="384.6" width="14" height="14" rx="3" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<rect x="113" y="408.6" width="14" height="14" rx="3" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="113" y="432.6" width="14" height="14" rx="3" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<rect x="113" y="456.6" width="14" height="14" rx="3" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="113" y="544.5" width="14" height="14" rx="3" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<rect x="113" y="568.5" width="14" height="14" rx="3" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<text x="136" y="184.6" font-size="13" font-weight="700" fill="#E2E8F0">ISF15ACP4</text>
+<text x="222.2" y="184.6" font-size="12" fill="#E2E8F0">Module</text>
+<text x="180" y="250.3" font-size="15" font-weight="700" fill="#BFDBFE">MCU interface</text>
+<text x="180" y="275.1" font-size="13" fill="#D2DAE4">serial, write only</text>
+<text x="532" y="250.3" font-size="15" font-weight="700" fill="#F8D27A">Command decoder</text>
+<text x="532" y="275.1" font-size="13" fill="#D2DAE4">Table 10</text>
+<text x="884" y="250.3" font-size="15" font-weight="700" fill="#A7F3E6">Display RAM</text>
+<text x="884" y="275.1" font-size="13" fill="#D2DAE4">96 x 64 x 16 bit</text>
+<text x="180" y="402.3" font-size="15" font-weight="700" fill="#E2E8F0">Reset and power</text>
+<text x="180" y="427.2" font-size="13" fill="#D2DAE4">RES#, VDD, VCC, GND</text>
+<text x="532" y="402.3" font-size="15" font-weight="700" fill="#F8D27A">Oscillator and timing</text>
+<text x="532" y="427.2" font-size="13" fill="#D2DAE4">display clock</text>
+<text x="884" y="402.3" font-size="15" font-weight="700" fill="#F8D27A">Gray scale decoder</text>
+<text x="884" y="427.2" font-size="13" fill="#D2DAE4">65k colours</text>
+<text x="180" y="554.3" font-size="15" font-weight="700" fill="#FDE68A">SPST switch</text>
+<text x="180" y="579.2" font-size="13" fill="#D2DAE4">normally open</text>
+<text x="532" y="554.3" font-size="15" font-weight="700" fill="#F8D27A">SEG/COM driving block</text>
+<text x="532" y="579.2" font-size="13" fill="#D2DAE4">96 RGB x 64</text>
+<text x="884" y="554.3" font-size="15" font-weight="700" fill="#A7F3E6">Colour OLED panel</text>
+<text x="884" y="579.2" font-size="13" fill="#D2DAE4">passive matrix</text>
+<text x="106" y="244.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">SS  4</text>
+<text x="106" y="268.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">SCK  7</text>
+<text x="106" y="292.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">SDI  8</text>
+<text x="106" y="316.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">DC  6</text>
+<text x="106" y="396.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">RES  5</text>
+<text x="106" y="420.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">VDD  3</text>
+<text x="106" y="444.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">VCC  9</text>
+<text x="106" y="468.1" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">GND  10</text>
+<text x="106" y="556" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">SW1  1</text>
+<text x="106" y="580" font-size="12.5" font-weight="600" font-family="'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace" text-anchor="end" fill="#E8EDF3">SW2  2</text>
+<circle cx="160" cy="239.6" r="3" fill="#2BB3A3"/>
+<circle cx="160" cy="263.6" r="3" fill="#2BB3A3"/>
+<circle cx="160" cy="287.6" r="3" fill="#2BB3A3"/>
+<circle cx="160" cy="311.6" r="3" fill="#2BB3A3"/>
+<circle cx="160" cy="391.6" r="3" fill="#2BB3A3"/>
+<circle cx="160" cy="415.6" r="3" fill="#FB7185"/>
+<circle cx="160" cy="439.6" r="3" fill="#FB7185"/>
+<circle cx="160" cy="463.6" r="3" fill="#94A3B8"/>
+<circle cx="160" cy="551.5" r="3" fill="#A78BFA"/>
+<circle cx="160" cy="575.5" r="3" fill="#A78BFA"/>
+<rect x="412.4" y="261.6" width="79.2" height="20" rx="10" fill="#0E131A"/>
+<text x="452" y="275.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">commands</text>
+<rect x="604.2" y="333.6" width="47.7" height="20" rx="10" fill="#0E131A"/>
+<text x="628" y="347.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">pixels</text>
+<rect x="956.7" y="341.6" width="38.6" height="20" rx="10" fill="#0E131A"/>
+<text x="976" y="355.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">data</text>
+<rect x="599.2" y="493.6" width="49.6" height="20" rx="10" fill="#0E131A"/>
+<text x="624" y="507.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">timing</text>
+<rect x="824.2" y="485.6" width="47.5" height="20" rx="10" fill="#0E131A"/>
+<text x="848" y="499.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">levels</text>
+<rect x="767.6" y="573.5" width="72.8" height="20" rx="10" fill="#0E131A"/>
+<text x="804" y="587.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">SEG/COM</text>
+<rect x="424.5" y="413.6" width="43" height="20" rx="10" fill="#0E131A"/>
+<text x="446" y="427.9" font-size="12" font-weight="500" text-anchor="middle" fill="#9AA6B5">reset</text>
+<rect x="32" y="646.9" width="14" height="14" rx="4" fill="#321820" stroke="#FB7185" stroke-width="1.4"/>
+<text x="54" y="658.5" font-size="12.5" fill="#9AA6B5">power</text>
+<rect x="117.6" y="646.9" width="14" height="14" rx="4" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<text x="139.6" y="658.5" font-size="12.5" fill="#9AA6B5">ground</text>
+<rect x="208.5" y="646.9" width="14" height="14" rx="4" fill="#0F2A28" stroke="#2BB3A3" stroke-width="1.4"/>
+<text x="230.5" y="658.5" font-size="12.5" fill="#9AA6B5">digital in</text>
+<rect x="306.9" y="646.9" width="14" height="14" rx="4" fill="#221A3A" stroke="#A78BFA" stroke-width="1.4"/>
+<text x="328.9" y="658.5" font-size="12.5" fill="#9AA6B5">digital in/out</text>
+<path d="M430.1 653.2L460.1 653.2" fill="none" stroke="#6C7889" stroke-width="1.6" marker-end="url(#fk-arrow-rail)"/>
+<text x="474.1" y="658.5" font-size="12.5" fill="#9AA6B5">signal or data between blocks</text>
+</svg>
