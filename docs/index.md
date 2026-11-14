@@ -9,12 +9,6 @@ hide:
 
 # ISF15ACP4 Driver
 
-<!-- generated: chip-summary -->
-The **ISF15ACP4** is a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the
-display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins (Distinctive
-Characteristics, [p. 1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
-<!-- /generated -->
-
 <p>A C++20 driver for the NKK ISF15ACP4 frameless OLED pushbutton: a 96 x 64 colour display on a write-only SPI bus
 and a debounced switch, on any MCU. It powers the OLED in the order the datasheet requires, draws, scrolls and
 reports button presses, long presses and repeats.</p>
@@ -23,6 +17,12 @@ reports button presses, long presses and repeats.</p>
 [API guide](api-guide.md){ .md-button }
 [Source on GitHub](https://github.com/kokeb-labs-drivers/driver-isf15acp4){ .md-button }
 </div>
+
+<!-- generated: chip-summary -->
+The **ISF15ACP4** is a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the
+display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins (Distinctive
+Characteristics, [p. 1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
+<!-- /generated -->
 
 <!-- figure: chip-hero -->
 <picture>
@@ -62,7 +62,8 @@ reports button presses, long presses and repeats.</p>
 - Several units combined into one screen: the sheet notes that units combine into one screen of any size and layout
 - A replacement for a switch of the same footprint: same outer dimensions and footprint as current switches
 
-Uses named by the datasheet (Distinctive Characteristics, [p. 1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
+Uses named by the datasheet (Distinctive Characteristics, [p.
+1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
 <!-- /generated -->
 
 ## Inside the module
@@ -119,6 +120,35 @@ Uses named by the datasheet (Distinctive Characteristics, [p. 1](https://www.nkk
 <!-- /figure -->
 
 The pin tables, the full schematic and the timing are on [Hardware](hardware.md).
+
+## Quick start
+
+Wire the module as above, write the port for your MCU ([Porting](porting.md)), then:
+
+<!-- generated: quickstart-code -->
+```cpp
+#include "isf15acp4.hpp"
+
+int show_hello(MyPort& port) {
+  isf15acp4::ISF15ACP4<MyPort> panel(port); // no I/O yet
+
+  if (auto r = panel.EnsureInitialized();
+      !r) {                           // 1. reset, configure, clear: the supply is still off
+    return static_cast<int>(r.error); //    Bus or InvalidArgument: check wiring and Config
+  }
+  if (auto r = panel.DisplayOn(); !r) { // 2. only now is the 15 V supply enabled and the panel on
+    return static_cast<int>(r.error);
+  }
+  if (auto r = panel.DrawRectangle(0, 0, 95, 63, isf15acp4::kWhite); !r) { // 3. draw
+    return static_cast<int>(r.error);
+  }
+  static_cast<void>(panel.Deinitialize()); // 4. display off, supply off, wait: always runs
+  return 0;
+}
+```
+<!-- /generated -->
+
+Every step, with the port and what to check when it does not work: [Quickstart](quickstart.md).
 
 ## Driver coverage
 

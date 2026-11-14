@@ -54,7 +54,8 @@ The site at <https://kokeb-labs-drivers.github.io/driver-isf15acp4/> opens when 
 - Several units combined into one screen: the sheet notes that units combine into one screen of any size and layout
 - A replacement for a switch of the same footprint: same outer dimensions and footprint as current switches
 
-Uses named by the datasheet (Distinctive Characteristics, [p. 1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
+Uses named by the datasheet (Distinctive Characteristics, [p.
+1](https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1)).
 <!-- /generated -->
 
 ## Inside the module
