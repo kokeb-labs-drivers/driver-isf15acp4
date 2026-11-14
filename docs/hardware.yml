@@ -12,6 +12,12 @@ schema: 1
 chip: ISF15ACP4
 
 refs:
+  cover: {doc: ds, section: "Distinctive Characteristics", page: 1}
+  oled: {doc: ds, section: "OLED Specifications", page: 2}
+  cmdtable: {doc: ctl, section: "Table 10 - Command Table", page: 28}
+  draw: {doc: ctl, section: "9.2.1 Draw Line (21h)", page: 48}
+  scroll: {doc: ctl, section: "9.2.9 Activate scrolling (2Fh)", page: 51}
+  remap: {doc: ctl, section: "9.1.6 Set Re-map & Data Format (A0h)", page: 37}
   pinout: {doc: ds, section: "Block diagram and pin configurations (sheet E6)", page: 3}
   supply: {doc: ds, section: "Recommended operating conditions (sheet E5)", page: 2}
   switch: {doc: ds, section: "Switch specifications (sheet E5)", page: 2}
@@ -53,6 +59,98 @@ supply:
   # difference are in docs/hardware.md.
   - {name: VCC, min_v: 14.0, max_v: 16.0, ref: supply}
   - {name: "VCC (ISC15ANP4, ISC01P)", min_v: 15.0, max_v: 17.0, ref: supply}
+
+
+# The chip-first README: what the module is and does, where it is used, how the driver covers it, what the address
+# commands of its display controller carry. `kokeb-docs figures` draws chip-hero, chip-capabilities and chip-frame-window
+# from it, `kokeb-docs gen` the README's chip-summary, chip-uses and chip-coverage regions. The module is a pushbutton
+# with a display controller inside; the controller's own datasheet is document `ctl`.
+overview:
+  summary: >-
+    a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes
+    commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins
+  category: Frameless OLED pushbutton
+  ref: cover
+  applications:
+    - {label: Several units combined into one screen, detail: "the sheet notes that units combine into one screen of any size and layout", ref: cover}
+    - {label: A replacement for a switch of the same footprint, detail: "same outer dimensions and footprint as current switches", ref: cover}
+  specs:
+    - {value: "96 RGB x 64", label: "pixels in the cap", ref: cover}
+    - {value: "65,536", label: "colours in 16-bit mode", ref: cover}
+    - {value: "1 million", label: "actuations at least", ref: cover}
+    - {value: "50,000 h", label: "display life at least", ref: cover}
+  system:
+    host: MCU
+    bus: SPI, write only
+    drives:
+      - {label: Colour OLED, detail: "96 RGB x 64, passive matrix", ref: oled}
+    senses:
+      - {label: Switch, detail: "SPST normally open, pins 1 and 2", ref: switch}
+
+# Headers the capability `api` and `registers` names are checked against.
+driver:
+  api: [inc/isf15acp4.hpp, inc/isf15acp4_types.hpp, inc/isf15acp4_button.hpp, inc/isf15acp4_spi_interface.hpp]
+  registers: [inc/isf15acp4_registers.hpp]
+
+capabilities:
+  - {id: display, title: Colour display, icon: light, status: supported, ref: oled,
+     what: "Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel",
+     api: [Present, WriteWindow, FillWindow, SetPixel, Clear],
+     registers: [kSetColumnAddress, kSetRowAddress, kRemap]}
+  - {id: engine, title: Drawing engine, icon: gate, status: supported, ref: draw,
+     what: "Draws lines and rectangles, copies, dims and clears a window with the controller's own engine",
+     api: [DrawLine, DrawRectangle, FillRectangle, CopyWindow, DimWindow, ClearWindow],
+     registers: [kDrawLine, kDrawRectangle, kCopy, kDimWindow, kClearWindow]}
+  - {id: scroll, title: Scrolling, icon: motion, status: supported, ref: scroll,
+     what: "Scrolls a window of the display horizontally and vertically at a set speed",
+     api: [SetupScroll, ActivateScroll, DeactivateScroll], registers: [kScrollSetup, kScrollOn, kScrollOff]}
+  - {id: brightness, title: Contrast and current, icon: gauge, status: supported, ref: cmdtable,
+     what: "Sets the contrast of each colour, the master current and a dim mode",
+     api: [SetContrast, SetMasterCurrent, SetDimSettings, DisplayDim],
+     registers: [kSetContrastA, kMasterCurrent, kDimMode]}
+  - {id: power, title: Power sequence, icon: power, status: supported, ref: power,
+     what: "Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on",
+     api: [EnsureInitialized, DisplayOn, DisplayOff, Deinitialize, "CtrlPin::VccEnable"],
+     registers: [kDisplayOn, kDisplayOff, kMasterConfig]}
+  - {id: sleep, title: Sleep, icon: sleep, status: supported, ref: oled,
+     what: "Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press",
+     api: [SetPowerSave, NotifyActivity], registers: [kPowerSave]}
+  - {id: tuning, title: Controller settings, icon: settings, status: supported, ref: remap,
+     what: "Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller",
+     api: [SetRemap, SetStartLine, SetClock, SetGrayScaleTable, SetPrechargeLevel, SetVcomh],
+     registers: [kRemap, kClockDivider, kGrayScaleTable, kPrechargeLevel, kVcomh]}
+  - {id: switch, title: SPST switch, icon: switch, status: supported, ref: switch,
+     what: "Debounces the contact and reports press, release, long press and repeat events",
+     api: [Poll, ReadSwitchRaw, SetButtonConfig, ButtonEvent]}
+  - {id: family, title: Smaller modules, icon: tag, status: supported, ref: variant1,
+     what: "Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)",
+     api: [PresetFor, HasSwitch, Variant]}
+
+frames:
+  - id: window
+    title: Display window commands
+    description: >-
+      Two commands set the RAM window the next pixels fill: a command byte and two address bytes, all sent with D/C#
+      low. The unused bits are marked with a star.
+    bits: 24
+    ref: cmdtable
+    rows:
+      - label: Column
+        sub: "D/C# low, 15h"
+        fields:
+          - {name: "15h", bits: [23, 16], tone: blue}
+          - {name: "*", bits: 15, tone: slate}
+          - {name: "start A6 to A0", bits: [14, 8], tone: amber, short: start}
+          - {name: "*", bits: 7, tone: slate}
+          - {name: "end B6 to B0", bits: [6, 0], tone: green, short: end}
+      - label: Row
+        sub: "D/C# low, 75h"
+        fields:
+          - {name: "75h", bits: [23, 16], tone: blue}
+          - {name: "* *", bits: [15, 14], tone: slate}
+          - {name: "start A5 to A0", bits: [13, 8], tone: amber, short: start}
+          - {name: "* *", bits: [7, 6], tone: slate}
+          - {name: "end B5 to B0", bits: [5, 0], tone: green, short: end}
 
 hooks:
   - {id: write, call: "Write()", kind: spi, source: inc/isf15acp4_spi_interface.hpp, symbol: Write}

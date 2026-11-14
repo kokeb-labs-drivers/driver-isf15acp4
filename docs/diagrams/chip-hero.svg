@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="747" viewBox="0 0 1200 747" role="img" aria-labelledby="chip-hero-title chip-hero-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-hero-title">ISF15ACP4</title>
+<desc id="chip-hero-desc">Overview of the ISF15ACP4, a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins. A MCU talks to it over SPI, write only; it drives Colour OLED; it reads back Switch. Headline figures: 96 RGB x 64 pixels in the cap; 65,536 colours in 16-bit mode; 1 million actuations at least; 50,000 h display life at least.</desc>
+<defs><marker id="fk-arrow-amber-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#C26A05"/></marker><marker id="fk-arrow-blue-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2563EB"/></marker><marker id="fk-arrow-teal-strong" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0B7A72"/></marker></defs>
+<rect x="0.5" y="0.5" width="1199" height="746" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#7A360E">FRAMELESS OLED PUSHBUTTON</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#0E1726">ISF15ACP4</text>
+<text x="32" y="115.4" font-size="18" fill="#566070">What talks to it, what it drives and what it reads back, with its headline numbers. Datasheet: Distinctive Characteristics, p. 1.</text>
+<rect x="32" y="131.4" width="1136" height="1" fill="#E2E7EE"/>
+<path d="M246 262.4 L410 262.4" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-blue-strong)" marker-start="url(#fk-arrow-blue-strong)"/>
+<path d="M672 262.4 L724 262.4" fill="none" stroke="#0B7A72" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-teal-strong)"/>
+<path d="M541 427.4 L541 371.4" fill="none" stroke="#C26A05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#fk-arrow-amber-strong)"/>
+<rect x="414" y="190.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="414" y="224.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="414" y="258.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="414" y="292.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="414" y="326.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="656" y="190.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="656" y="224.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="656" y="258.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="656" y="292.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="656" y="326.9" width="12" height="7" rx="2" fill="#F1F4F8" stroke="#64748B" stroke-width="1.2"/>
+<rect x="426" y="157.4" width="230" height="210" rx="10" fill="#F5F7FA" stroke="#2B3442" stroke-width="2.2"/>
+<circle cx="446" cy="177.4" r="6" fill="#2B3442"/>
+<rect x="32" y="205.4" width="210" height="114" rx="12" fill="#EAF2FF" stroke="#2563EB" stroke-width="1.4"/>
+<rect x="32" y="213.4" width="4" height="98" rx="2" fill="#2563EB"/>
+<rect x="728" y="205.4" width="260" height="114" rx="12" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="728" y="213.4" width="4" height="98" rx="2" fill="#0B7A72"/>
+<rect x="361" y="431.4" width="360" height="114" rx="12" fill="#FFF5E3" stroke="#C26A05" stroke-width="1.4"/>
+<rect x="361" y="439.4" width="4" height="98" rx="2" fill="#C26A05"/>
+<rect x="32" y="585.4" width="272" height="130.9" rx="12" fill="#F5F7FA" stroke="#C9D1DB" stroke-width="1"/>
+<rect x="320" y="585.4" width="272" height="130.9" rx="12" fill="#F5F7FA" stroke="#C9D1DB" stroke-width="1"/>
+<rect x="608" y="585.4" width="272" height="130.9" rx="12" fill="#F5F7FA" stroke="#C9D1DB" stroke-width="1"/>
+<rect x="896" y="585.4" width="272" height="130.9" rx="12" fill="#F5F7FA" stroke="#C9D1DB" stroke-width="1"/>
+<text x="541" y="256.4" font-size="30" font-weight="700" text-anchor="middle" fill="#0E1726">ISF15ACP4</text>
+<text x="541" y="286.4" font-size="17" text-anchor="middle" fill="#566070">Module</text>
+<text x="541" y="310.4" font-size="16" text-anchor="middle" fill="#566070">10 pins</text>
+<text x="56" y="240.4" font-size="20" font-weight="700" fill="#1E429F">MCU</text>
+<text x="56" y="271" font-size="17" fill="#2B3442">your firmware and</text>
+<text x="56" y="295.7" font-size="17" fill="#2B3442">this driver</text>
+<rect x="264.1" y="250.4" width="127.7" height="24" rx="12" fill="#FFFFFF"/>
+<text x="328" y="268.2" font-size="16" font-weight="500" text-anchor="middle" fill="#566070">SPI, write only</text>
+<text x="752" y="240.4" font-size="20" font-weight="700" fill="#0B5F59">Colour OLED</text>
+<text x="752" y="271" font-size="17" fill="#2B3442">96 RGB x 64, passive</text>
+<text x="752" y="295.7" font-size="17" fill="#2B3442">matrix</text>
+<text x="385" y="466.4" font-size="20" font-weight="700" fill="#8A3C0B">Reads back</text>
+<text x="385" y="497" font-size="17" fill="#2B3442">Switch (SPST normally open, pins 1</text>
+<text x="385" y="521.7" font-size="17" fill="#2B3442">and 2)</text>
+<text x="48" y="633.4" font-size="30" font-weight="700" fill="#0E1726">96 RGB x 64</text>
+<text x="48" y="663" font-size="17" fill="#2B3442">pixels in the cap</text>
+<text x="48" y="698.4" font-size="16" fill="#566070">Distinctive Characteristics, p. 1</text>
+<text x="336" y="633.4" font-size="30" font-weight="700" fill="#0E1726">65,536</text>
+<text x="336" y="663" font-size="17" fill="#2B3442">colours in 16-bit mode</text>
+<text x="336" y="698.4" font-size="16" fill="#566070">Distinctive Characteristics, p. 1</text>
+<text x="624" y="633.4" font-size="30" font-weight="700" fill="#0E1726">1 million</text>
+<text x="624" y="663" font-size="17" fill="#2B3442">actuations at least</text>
+<text x="624" y="698.4" font-size="16" fill="#566070">Distinctive Characteristics, p. 1</text>
+<text x="912" y="633.4" font-size="30" font-weight="700" fill="#0E1726">50,000 h</text>
+<text x="912" y="663" font-size="17" fill="#2B3442">display life at least</text>
+<text x="912" y="698.4" font-size="16" fill="#566070">Distinctive Characteristics, p. 1</text>
+</svg>

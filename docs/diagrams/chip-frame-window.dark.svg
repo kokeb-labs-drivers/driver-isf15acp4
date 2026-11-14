@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="416" viewBox="0 0 1200 416" role="img" aria-labelledby="chip-frame-window-title chip-frame-window-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-frame-window-title">ISF15ACP4: Display window commands</title>
+<desc id="chip-frame-window-desc">Display window commands of the ISF15ACP4, 24 bits, most significant bit first. Column: 15h (bits 23 to 16), * (bit 15), start A6 to A0 (bits 14 to 8), * (bit 7), end B6 to B0 (bits 6 to 0); Row: 75h (bits 23 to 16), * * (bits 15 to 14), start A5 to A0 (bits 13 to 8), * * (bits 7 to 6), end B5 to B0 (bits 5 to 0).</desc>
+<rect x="0.5" y="0.5" width="1199" height="415" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#F8D27A">ON THE BUS</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#E8EDF3">ISF15ACP4: Display window commands</text>
+<text x="32" y="115.4" font-size="18" fill="#9AA6B5">Two commands set the RAM window the next pixels fill: a command byte and two address bytes, all sent with D/C# low. The</text>
+<text x="32" y="141.5" font-size="18" fill="#9AA6B5">unused bits are marked with a star. 24 bits, sent most significant bit first. Datasheet: Table 10 - Command Table, p. 28.</text>
+<rect x="32" y="157.5" width="1136" height="1" fill="#252F3C"/>
+<rect x="210" y="209.5" width="310" height="46" rx="6" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="520" y="209.5" width="38.8" height="46" rx="6" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="558.8" y="209.5" width="271.2" height="46" rx="6" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="830" y="209.5" width="38.8" height="46" rx="6" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="868.8" y="209.5" width="271.2" height="46" rx="6" fill="#11281A" stroke="#4ADE80" stroke-width="1.4"/>
+<rect x="210" y="297.5" width="310" height="46" rx="6" fill="#13233A" stroke="#60A5FA" stroke-width="1.4"/>
+<rect x="520" y="297.5" width="77.5" height="46" rx="6" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="597.5" y="297.5" width="232.5" height="46" rx="6" fill="#2C2310" stroke="#FBBF24" stroke-width="1.4"/>
+<rect x="830" y="297.5" width="77.5" height="46" rx="6" fill="#1B232E" stroke="#94A3B8" stroke-width="1.4"/>
+<rect x="907.5" y="297.5" width="232.5" height="46" rx="6" fill="#11281A" stroke="#4ADE80" stroke-width="1.4"/>
+<text x="210" y="191.5" font-size="16" fill="#9AA6B5">MSB, sent first</text>
+<text x="1140" y="191.5" font-size="16" text-anchor="end" fill="#9AA6B5">LSB, sent last</text>
+<text x="32" y="230.5" font-size="20" font-weight="700" fill="#E8EDF3">Column</text>
+<text x="32" y="250.5" font-size="16" fill="#9AA6B5">D/C# low, 15h</text>
+<text x="365" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#BFDBFE">15h</text>
+<text x="212" y="275.5" font-size="16" fill="#9AA6B5">23</text>
+<text x="518" y="275.5" font-size="16" text-anchor="end" fill="#9AA6B5">16</text>
+<text x="539.4" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#E2E8F0">*</text>
+<text x="539.4" y="275.5" font-size="16" text-anchor="middle" fill="#9AA6B5">15</text>
+<text x="694.4" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#FDE68A">start A6 to A0</text>
+<text x="560.8" y="275.5" font-size="16" fill="#9AA6B5">14</text>
+<text x="828" y="275.5" font-size="16" text-anchor="end" fill="#9AA6B5">8</text>
+<text x="849.4" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#E2E8F0">*</text>
+<text x="849.4" y="275.5" font-size="16" text-anchor="middle" fill="#9AA6B5">7</text>
+<text x="1004.4" y="238.6" font-size="17" font-weight="600" text-anchor="middle" fill="#BBF7D0">end B6 to B0</text>
+<text x="870.8" y="275.5" font-size="16" fill="#9AA6B5">6</text>
+<text x="1138" y="275.5" font-size="16" text-anchor="end" fill="#9AA6B5">0</text>
+<text x="32" y="318.5" font-size="20" font-weight="700" fill="#E8EDF3">Row</text>
+<text x="32" y="338.5" font-size="16" fill="#9AA6B5">D/C# low, 75h</text>
+<text x="365" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#BFDBFE">75h</text>
+<text x="212" y="363.5" font-size="16" fill="#9AA6B5">23</text>
+<text x="518" y="363.5" font-size="16" text-anchor="end" fill="#9AA6B5">16</text>
+<text x="558.8" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#E2E8F0">* *</text>
+<text x="522" y="363.5" font-size="16" fill="#9AA6B5">15</text>
+<text x="595.5" y="363.5" font-size="16" text-anchor="end" fill="#9AA6B5">14</text>
+<text x="713.8" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#FDE68A">start A5 to A0</text>
+<text x="599.5" y="363.5" font-size="16" fill="#9AA6B5">13</text>
+<text x="828" y="363.5" font-size="16" text-anchor="end" fill="#9AA6B5">8</text>
+<text x="868.8" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#E2E8F0">* *</text>
+<text x="832" y="363.5" font-size="16" fill="#9AA6B5">7</text>
+<text x="905.5" y="363.5" font-size="16" text-anchor="end" fill="#9AA6B5">6</text>
+<text x="1023.8" y="326.6" font-size="17" font-weight="600" text-anchor="middle" fill="#BBF7D0">end B5 to B0</text>
+<text x="909.5" y="363.5" font-size="16" fill="#9AA6B5">5</text>
+<text x="1138" y="363.5" font-size="16" text-anchor="end" fill="#9AA6B5">0</text>
+</svg>
