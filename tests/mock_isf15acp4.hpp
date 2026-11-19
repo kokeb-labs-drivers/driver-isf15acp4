@@ -427,8 +427,8 @@ private:
     }
   }
 
-  /// The whole start-up sequence has arrived since reset: external VCC, remap, geometry, display mode, contrast,
-  /// current, dim settings, phases, clock and the two levels.
+  /// The whole start-up sequence has arrived since reset: external VCC, remap, geometry, display
+  /// mode, contrast, current, dim settings, phases, clock and the two levels.
   [[nodiscard]] bool configComplete() const noexcept {
     constexpr std::array<uint8_t, 14> kNeeded{0xA0, 0xA1, 0xA2, 0xA8, 0xAB, 0xAD, 0x81,
                                               0x82, 0x83, 0x87, 0xB1, 0xB3, 0xBB, 0xBE};
@@ -437,8 +437,8 @@ private:
         return false;
       }
     }
-    // The display mode is one of the four opcodes A4h to A7h (normal, all on, all off, inverse): the driver sends the
-    // configured one.
+    // The display mode is one of the four opcodes A4h to A7h (normal, all on, all off, inverse):
+    // the driver sends the configured one.
     if (!seen_[0xA4] && !seen_[0xA5] && !seen_[0xA6] && !seen_[0xA7]) {
       return false;
     }
