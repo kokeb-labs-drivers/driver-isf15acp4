@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="783" height="651" viewBox="0 0 783 651" role="img" aria-labelledby="start-up-and-draw-title start-up-and-draw-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="start-up-and-draw-title">From start-up to a drawn rectangle</title>
+<desc id="start-up-and-draw-desc">From start-up to a drawn rectangle: initialisation powers and resets the display and clears its memory, DisplayOn raises the panel supply and sends the display-on command, and DrawRectangle sends one drawing command.</desc>
+<defs><marker id="start-up-and-draw-arrow-rail" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7C8798"/></marker></defs>
+<rect x="0.5" y="0.5" width="782" height="650" rx="16" fill="#FFFFFF" stroke="#E2E7EE"/>
+<text x="32" y="54.8" font-size="26" font-weight="700" fill="#0E1726">From start-up to a drawn rectangle</text>
+<rect x="32" y="70.8" width="719" height="1" fill="#E2E7EE"/>
+<path d="M104.9 144.8 L104.9 654.8" fill="none" stroke="#738093" stroke-width="1.2" stroke-dasharray="5 5"/>
+<path d="M274.9 144.8 L274.9 654.8" fill="none" stroke="#738093" stroke-width="1.2" stroke-dasharray="5 5"/>
+<path d="M678.1 144.8 L678.1 654.8" fill="none" stroke="#738093" stroke-width="1.2" stroke-dasharray="5 5"/>
+<path d="M108.9 180.8 L270.9 180.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 224.8 L674.1 224.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 268.8 L674.1 268.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 312.8 L674.1 312.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 356.8 L674.1 356.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M108.9 400.8 L270.9 400.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 444.8 L674.1 444.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 488.8 L674.1 488.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M108.9 532.8 L270.9 532.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 576.8 L674.1 576.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<path d="M278.9 620.8 L674.1 620.8" fill="none" stroke="#7C8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#start-up-and-draw-arrow-rail)"/>
+<rect x="39.9" y="88.8" width="130" height="52" rx="10" fill="#FDF0FF" stroke="#A21CAF" stroke-width="1.4"/>
+<rect x="39.9" y="96.8" width="4" height="36" rx="2" fill="#A21CAF"/>
+<rect x="209.9" y="88.8" width="130" height="52" rx="10" fill="#EAF7EF" stroke="#15803D" stroke-width="1.4"/>
+<rect x="209.9" y="96.8" width="4" height="36" rx="2" fill="#15803D"/>
+<rect x="613.1" y="88.8" width="130" height="52" rx="10" fill="#E6F6F4" stroke="#0B7A72" stroke-width="1.4"/>
+<rect x="613.1" y="96.8" width="4" height="36" rx="2" fill="#0B7A72"/>
+<text x="107.9" y="119.3" font-size="15" font-weight="700" text-anchor="middle" fill="#86198F">App</text>
+<text x="277.9" y="119.3" font-size="15" font-weight="700" text-anchor="middle" fill="#14532D">Core</text>
+<text x="681.1" y="119.3" font-size="15" font-weight="700" text-anchor="middle" fill="#0B5F59">Port</text>
+<rect x="129.1" y="156.8" width="121.5" height="20" rx="10" fill="#FFFFFF"/>
+<text x="189.9" y="171.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">EnsureInitialized()</text>
+<rect x="375.7" y="200.8" width="201.6" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="215.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">GpioSet(VccEnable, INACTIVE)</text>
+<rect x="350.6" y="244.8" width="251.9" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="259.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">GpioSet(Reset, ACTIVE) then INACTIVE</text>
+<rect x="338.3" y="288.8" width="276.4" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="303.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">Write(Command, display off, configuration)</text>
+<rect x="346.8" y="332.8" width="259.3" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="347.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">Write(Data, 12 288 zero bytes in chunks)</text>
+<rect x="148.1" y="376.8" width="83.6" height="20" rx="10" fill="#FFFFFF"/>
+<text x="189.9" y="391.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">DisplayOn()</text>
+<rect x="382.3" y="420.8" width="188.5" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="435.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">GpioSet(VccEnable, ACTIVE)</text>
+<rect x="282.9" y="464.8" width="387.2" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="479.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">DelayUs(vcc_settle), Write(Command, AFh), DelayUs(100 ms)</text>
+<rect x="127.1" y="508.8" width="125.6" height="20" rx="10" fill="#FFFFFF"/>
+<text x="189.9" y="523.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">DrawRectangle(...)</text>
+<rect x="329.6" y="552.8" width="293.7" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="567.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">Write(Command, 26h, 22h and 10 parameters)</text>
+<rect x="400" y="596.8" width="152.9" height="20" rx="10" fill="#FFFFFF"/>
+<text x="476.5" y="611.1" font-size="12" font-weight="500" text-anchor="middle" fill="#566070">DelayUs(engine_settle)</text>
+</svg>
