@@ -1114,7 +1114,7 @@
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>Top to bottom, each arrow is a call. Your application calls one object, whose public calls are listed from the umbrella header in inc/. The core turns each call into register reads and writes and hands them to the port contract (the CRTP base in inc/*_interface.hpp), which forwards them, at compile time, to the hooks of the port class you write; your port moves the bytes on the bus. The notes on the right say which layers stay the same on every MCU and which one you write. A library without a port contract has only the first two layers.</p>
-<p>Drawn from: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a> <code>public calls</code>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a> <code>SpiInterface</code>; figure module <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
+<p>Drawn from: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a> <code>public calls</code>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a> <code>SpiInterface</code>; figure module <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
 </details>
 <h2 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
 <table>
@@ -1128,17 +1128,17 @@
 <tbody>
 <tr>
 <td>Core</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/src/isf15acp4.ipp"><code>src/isf15acp4.ipp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/src/isf15acp4.ipp"><code>src/isf15acp4.ipp</code></a></td>
 <td>The power sequence, configuration, pixel windows, the drawing engine, scrolling, the switch, errors</td>
 </tr>
 <tr>
 <td>Chip definitions</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_registers.hpp"><code>inc/isf15acp4_registers.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_types.hpp"><code>inc/isf15acp4_types.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_button.hpp"><code>inc/isf15acp4_button.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_detail.hpp"><code>inc/isf15acp4_detail.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_registers.hpp"><code>inc/isf15acp4_registers.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_types.hpp"><code>inc/isf15acp4_types.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_button.hpp"><code>inc/isf15acp4_button.hpp</code></a>, <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_detail.hpp"><code>inc/isf15acp4_detail.hpp</code></a></td>
 <td>The command table and its constants, <code>Config</code>, <code>Error</code>, colours, the debouncer, compile-time helpers</td>
 </tr>
 <tr>
 <td>Port contract</td>
-<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/5082104a9d48f7543aa730d97e7f452fc3db0269/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></td>
+<td><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/21ca9574c3add446533584c5b98664352258e604/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></td>
 <td>The bus requirements, <code>CtrlPin</code>, <code>DataKind</code>, the <code>SpiPort</code> concept</td>
 </tr>
 <tr>
