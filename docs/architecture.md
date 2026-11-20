@@ -38,23 +38,15 @@ machine, tested alone, and `Poll()` feeds it from the port.
 
 ## Show something
 
-```mermaid
-sequenceDiagram
-    participant App
-    participant Core
-    participant Port
-    App->>Core: EnsureInitialized()
-    Core->>Port: GpioSet(VccEnable, INACTIVE)
-    Core->>Port: GpioSet(Reset, ACTIVE) then INACTIVE
-    Core->>Port: Write(Command, display off, configuration)
-    Core->>Port: Write(Data, 12 288 zero bytes in chunks)
-    App->>Core: DisplayOn()
-    Core->>Port: GpioSet(VccEnable, ACTIVE)
-    Core->>Port: DelayUs(vcc_settle), Write(Command, AFh), DelayUs(100 ms)
-    App->>Core: DrawRectangle(...)
-    Core->>Port: Write(Command, 26h, 22h and 10 parameters)
-    Core->>Port: DelayUs(engine_settle)
-```
+<!-- figure: start-up-and-draw -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/start-up-and-draw.dark.svg">
+  <img src="diagrams/start-up-and-draw.svg"
+    alt="From start-up to a drawn rectangle: initialisation powers and resets the display and clears its
+    memory, DisplayOn raises the panel supply and sends the display-on command, and DrawRectangle sends
+    one drawing command.">
+</picture>
+<!-- /figure -->
 
 Every method is one or a few transfers. The core keeps command and pixel buffers as members (`command_`, `data_`), so
 no call allocates and a `Write()` always gets a pointer that stays valid until it returns.
