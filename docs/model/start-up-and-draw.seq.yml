@@ -1,0 +1,29 @@
+---
+# Model of the figure 'start-up-and-draw'. Edit this file; `kokeb-docs figures` draws it. Never edit the SVGs.
+kind: seq
+id: start-up-and-draw
+title: "From start-up to a drawn rectangle"
+alt: >-
+  From start-up to a drawn rectangle: initialisation powers and resets the display and clears its memory,
+  DisplayOn raises the panel supply and sends the display-on command, and DrawRectangle sends one drawing command.
+reads: >-
+  Participants, left to right: App, Core and Port. The steps run from top to bottom. App sends EnsureInitialized() to Core. Core sends GpioSet(VccEnable, INACTIVE) to Port. Core sends GpioSet(Reset, ACTIVE) then INACTIVE to Port. Core sends Write(Command, display off, configuration) to Port. Core sends Write(Data, 12 288 zero bytes in chunks) to Port. App sends DisplayOn() to Core. Core sends GpioSet(VccEnable, ACTIVE) to Port. Core sends DelayUs(vcc_settle), Write(Command, AFh), DelayUs(100 ms) to Port. App sends DrawRectangle(...) to Core. Core sends Write(Command, 26h, 22h and 10 parameters) to Port. Core sends DelayUs(engine_settle) to Port.
+print: landscape
+sources:
+  - docs/model/start-up-and-draw.seq.yml
+participants:
+  - {id: app, label: "App", tone: magenta}
+  - {id: core, label: "Core", tone: green}
+  - {id: port, label: "Port", tone: teal}
+steps:
+  - {from: app, to: core, label: "EnsureInitialized()"}
+  - {from: core, to: port, label: "GpioSet(VccEnable, INACTIVE)"}
+  - {from: core, to: port, label: "GpioSet(Reset, ACTIVE) then INACTIVE"}
+  - {from: core, to: port, label: "Write(Command, display off, configuration)"}
+  - {from: core, to: port, label: "Write(Data, 12 288 zero bytes in chunks)"}
+  - {from: app, to: core, label: "DisplayOn()"}
+  - {from: core, to: port, label: "GpioSet(VccEnable, ACTIVE)"}
+  - {from: core, to: port, label: "DelayUs(vcc_settle), Write(Command, AFh), DelayUs(100 ms)"}
+  - {from: app, to: core, label: "DrawRectangle(...)"}
+  - {from: core, to: port, label: "Write(Command, 26h, 22h and 10 parameters)"}
+  - {from: core, to: port, label: "DelayUs(engine_settle)"}

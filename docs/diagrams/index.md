@@ -101,3 +101,21 @@ Drawn from:
 
 - `public calls` in [`inc/isf15acp4.hpp`](../../inc/isf15acp4.hpp)
 - `SpiInterface` in [`inc/isf15acp4_spi_interface.hpp`](../../inc/isf15acp4_spi_interface.hpp)
+
+## From start-up to a drawn rectangle
+
+<!-- figure: start-up-and-draw -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="start-up-and-draw.dark.svg">
+  <img src="start-up-and-draw.svg"
+    alt="From start-up to a drawn rectangle: initialisation powers and resets the display and clears its
+    memory, DisplayOn raises the panel supply and sends the display-on command, and DrawRectangle sends
+    one drawing command.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/start-up-and-draw.seq.yml`](../model/start-up-and-draw.seq.yml)
+
+Drawn from:
+
+- [`docs/model/start-up-and-draw.seq.yml`](../model/start-up-and-draw.seq.yml)
