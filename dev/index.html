@@ -100,72 +100,6 @@
   <meta property="og:description" content="C++20 driver for the NKK ISF15ACP4 frameless OLED pushbutton: a 96RGB x 64 SSD1331-class OLED on write-only SPI and a debounced SPST switch.">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-isf15acp4/latest/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -537,6 +471,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-get" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -585,6 +585,8 @@
   
     
     
+      
+        
       
         
       
@@ -866,6 +868,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-it-is-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where it is used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pins-and-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pins and wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#driver-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-get" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -935,29 +1003,218 @@ reports button presses, long presses and repeats.</p>
 <a class="md-button" href="api-guide/">API guide</a>
 <a class="md-button" href="https://github.com/kokeb-labs-drivers/driver-isf15acp4">Source on GitHub</a></p>
 </div>
+<!-- generated: chip-summary -->
+<p>The <strong>ISF15ACP4</strong> is a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the
+display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins (Distinctive
+Characteristics, <a href="https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1">p. 1</a>).</p>
+<!-- /generated -->
+
+<figure class="kb-figure">
+<img src="diagrams/chip-hero.svg#only-light" alt="Overview of the ISF15ACP4, a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins. A MCU talks to it over SPI, write only; it drives Colour OLED; it reads back Switch. Headline figures: 96 RGB x 64 pixels in the cap; 65,536 colours in 16-bit mode; 1 million actuations at least; 50,000 h display life at least." width="1200" height="768"><img src="diagrams/chip-hero.dark.svg#only-dark" alt="Overview of the ISF15ACP4, a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins. A MCU talks to it over SPI, write only; it drives Colour OLED; it reads back Switch. Headline figures: 96 RGB x 64 pixels in the cap; 65,536 colours in 16-bit mode; 1 million actuations at least; 50,000 h display life at least." width="1200" height="768">
+<figcaption>ISF15ACP4</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The ISF15ACP4 in the middle, drawn as its Module package. On the left the MCU that runs the driver, joined to it by SPI, write only. To the right, what the chip drives, in the order the power flows. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<h2 id="what-it-does">What it does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-capabilities.svg#only-light" alt="Capability map of the ISF15ACP4: Colour display (supported): Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel; Drawing engine (supported): Draws lines and rectangles, copies, dims and clears a window with the controller&#x27;s own engine; Scrolling (supported): Scrolls a window of the display horizontally and vertically at a set speed; Contrast and current (supported): Sets the contrast of each colour, the master current and a dim mode; Power sequence (supported): Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on; Sleep (supported): Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press; Controller settings (supported): Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller; SPST switch (supported): Debounces the contact and reports press, release, long press and repeat events; Smaller modules (supported): Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)." width="1200" height="1036" loading="lazy"><img src="diagrams/chip-capabilities.dark.svg#only-dark" alt="Capability map of the ISF15ACP4: Colour display (supported): Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel; Drawing engine (supported): Draws lines and rectangles, copies, dims and clears a window with the controller&#x27;s own engine; Scrolling (supported): Scrolls a window of the display horizontally and vertically at a set speed; Contrast and current (supported): Sets the contrast of each colour, the master current and a dim mode; Power sequence (supported): Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on; Sleep (supported): Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press; Controller settings (supported): Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller; SPST switch (supported): Debounces the contact and reports press, release, long press and repeat events; Smaller modules (supported): Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)." width="1200" height="1036" loading="lazy">
+<figcaption>What the ISF15ACP4 does</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>Each card is one function of the ISF15ACP4: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<h2 id="where-it-is-used">Where it is used<a class="headerlink" href="#where-it-is-used" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-uses -->
+<ul>
+<li>Several units combined into one screen: the sheet notes that units combine into one screen of any size and layout</li>
+<li>A replacement for a switch of the same footprint: same outer dimensions and footprint as current switches</li>
+</ul>
+<p>Uses named by the datasheet (Distinctive Characteristics, <a href="https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=1">p.
+1</a>).</p>
+<!-- /generated -->
+
+<h2 id="inside-the-module">Inside the module<a class="headerlink" href="#inside-the-module" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-blocks.svg#only-light" alt="Block diagram of the ISF15ACP4: its function blocks, how they connect and which package pins reach each block." width="1200" height="693" loading="lazy"><img src="diagrams/chip-blocks.dark.svg#only-dark" alt="Block diagram of the ISF15ACP4: its function blocks, how they connect and which package pins reach each block." width="1200" height="693" loading="lazy">
+<figcaption>Inside the ISF15ACP4</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The ISF15ACP4's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<h2 id="pins-and-wiring">Pins and wiring<a class="headerlink" href="#pins-and-wiring" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="diagrams/chip-pinout.svg#only-light" alt="Pinout of the ISF15ACP4 in Module, top view: 10 pins, each with its name, its electrical type as a colour and the driver hook that uses it." width="982" height="455" loading="lazy"><img src="diagrams/chip-pinout.dark.svg#only-dark" alt="Pinout of the ISF15ACP4 in Module, top view: 10 pins, each with its name, its electrical type as a colour and the driver hook that uses it." width="982" height="455" loading="lazy">
+<figcaption>ISF15ACP4 pinout, Module</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The ISF15ACP4 seen from the top, in its Module package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-wiring-typical.svg#only-light" alt="Wiring of the ISF15ACP4 for the Typical application: MCU SPI SCK to SCK (Write()); MCU SPI MOSI to SDI (Write()); MCU GPIO / CS to SS (Write()); MCU GPIO to DC (Write(DataKind)); MCU GPIO to RES (GpioSet(CtrlPin::Reset)); MCU GPIO (input) to SW1 (ReadSwitch()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1031" loading="lazy"><img src="diagrams/chip-wiring-typical.dark.svg#only-dark" alt="Wiring of the ISF15ACP4 for the Typical application: MCU SPI SCK to SCK (Write()); MCU SPI MOSI to SDI (Write()); MCU GPIO / CS to SS (Write()); MCU GPIO to DC (Write(DataKind)); MCU GPIO to RES (GpioSet(CtrlPin::Reset)); MCU GPIO (input) to SW1 (ReadSwitch()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1031" loading="lazy">
+<figcaption>Wiring: Typical application</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCU on the left, the ISF15ACP4 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-outline.svg#only-light" alt="Outline of the ISF15ACP4 in Module drawn to scale from above: body 23.13 x 23.0 x 18.0 mm, pitch 4.0 mm, 10 pins." width="971" height="876" loading="lazy"><img src="diagrams/chip-outline.dark.svg#only-dark" alt="Outline of the ISF15ACP4 in Module drawn to scale from above: body 23.13 x 23.0 x 18.0 mm, pitch 4.0 mm, 10 pins." width="971" height="876" loading="lazy">
+<figcaption>ISF15ACP4 package, Module</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The ISF15ACP4 package seen from the top and, when the height is known, from the side, drawn to scale: 23.13 x 23.0 x 18.0 mm. The arrows carry the datasheet's dimensions, the dot marks pin 1 and the pads are numbered counter-clockwise from it, coloured by the pin's electrical type (legend below). Pads sit centred on each side at the stated pitch; the datasheet's land pattern is the reference for a board.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<figure class="kb-figure">
+<img src="diagrams/chip-frame-window.svg#only-light" alt="Display window commands of the ISF15ACP4, 24 bits, most significant bit first. Column: 15h (bits 23 to 16), * (bit 15), start A6 to A0 (bits 14 to 8), * (bit 7), end B6 to B0 (bits 6 to 0); Row: 75h (bits 23 to 16), * * (bits 15 to 14), start A5 to A0 (bits 13 to 8), * * (bits 7 to 6), end B5 to B0 (bits 5 to 0)." width="1200" height="416" loading="lazy"><img src="diagrams/chip-frame-window.dark.svg#only-dark" alt="Display window commands of the ISF15ACP4, 24 bits, most significant bit first. Column: 15h (bits 23 to 16), * (bit 15), start A6 to A0 (bits 14 to 8), * (bit 7), end B6 to B0 (bits 6 to 0); Row: 75h (bits 23 to 16), * * (bits 15 to 14), start A5 to A0 (bits 13 to 8), * * (bits 7 to 6), end B5 to B0 (bits 5 to 0)." width="1200" height="416" loading="lazy">
+<figcaption>ISF15ACP4: Display window commands</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>One Display window commands of the ISF15ACP4, 24 bits in a row from the most significant (left, sent first) to the least significant (right). Each row is one kind of frame; each coloured box a field, with its first and last bit number under it.</p>
+<p>Drawn from: <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<p>The pin tables, the full schematic and the timing are on <a href="hardware/">Hardware</a>.</p>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>Wire the module as above, write the port for your MCU (<a href="porting/">Porting</a>), then:</p>
+<!-- generated: quickstart-code -->
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"isf15acp4.hpp"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">show_hello</span><span class="p">(</span><span class="n">MyPort</span><span class="o">&amp;</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">isf15acp4</span><span class="o">::</span><span class="n">ISF15ACP4</span><span class="o">&lt;</span><span class="n">MyPort</span><span class="o">&gt;</span><span class="w"> </span><span class="n">panel</span><span class="p">(</span><span class="n">port</span><span class="p">);</span><span class="w"> </span><span class="c1">// no I/O yet</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">panel</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="o">!</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                           </span><span class="c1">// 1. reset, configure, clear: the supply is still off</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">error</span><span class="p">);</span><span class="w"> </span><span class="c1">//    Bus or InvalidArgument: check wiring and Config</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">panel</span><span class="p">.</span><span class="n">DisplayOn</span><span class="p">();</span><span class="w"> </span><span class="o">!</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 2. only now is the 15 V supply enabled and the panel on</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">error</span><span class="p">);</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">panel</span><span class="p">.</span><span class="n">DrawRectangle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w"> </span><span class="n">isf15acp4</span><span class="o">::</span><span class="n">kWhite</span><span class="p">);</span><span class="w"> </span><span class="o">!</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 3. draw</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">error</span><span class="p">);</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">panel</span><span class="p">.</span><span class="n">Deinitialize</span><span class="p">());</span><span class="w"> </span><span class="c1">// 4. display off, supply off, wait: always runs</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<!-- /generated -->
+
+<p>Every step, with the port and what to check when it does not work: <a href="quickstart/">Quickstart</a>.</p>
+<h2 id="driver-coverage">Driver coverage<a class="headerlink" href="#driver-coverage" title="Permanent link">&para;</a></h2>
+<!-- generated: chip-coverage -->
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What the chip does</th>
+<th>Driver API</th>
+<th>Registers</th>
+<th>Status</th>
+<th>Datasheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colour display</td>
+<td>Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel</td>
+<td><code>Present</code>, <code>WriteWindow</code>, <code>FillWindow</code>, <code>SetPixel</code>, <code>Clear</code></td>
+<td><code>kSetColumnAddress</code>, <code>kSetRowAddress</code>, <code>kRemap</code></td>
+<td>Supported</td>
+<td>OLED Specifications, <a href="https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=2">p. 2</a></td>
+</tr>
+<tr>
+<td>Drawing engine</td>
+<td>Draws lines and rectangles, copies, dims and clears a window with the controller's own engine</td>
+<td><code>DrawLine</code>, <code>DrawRectangle</code>, <code>FillRectangle</code>, <code>CopyWindow</code>, <code>DimWindow</code>, <code>ClearWindow</code></td>
+<td><code>kDrawLine</code>, <code>kDrawRectangle</code>, <code>kCopy</code>, <code>kDimWindow</code>, <code>kClearWindow</code></td>
+<td>Supported</td>
+<td>9.2.1, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf#page=48">p. 48</a></td>
+</tr>
+<tr>
+<td>Scrolling</td>
+<td>Scrolls a window of the display horizontally and vertically at a set speed</td>
+<td><code>SetupScroll</code>, <code>ActivateScroll</code>, <code>DeactivateScroll</code></td>
+<td><code>kScrollSetup</code>, <code>kScrollOn</code>, <code>kScrollOff</code></td>
+<td>Supported</td>
+<td>9.2.9, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf#page=51">p. 51</a></td>
+</tr>
+<tr>
+<td>Contrast and current</td>
+<td>Sets the contrast of each colour, the master current and a dim mode</td>
+<td><code>SetContrast</code>, <code>SetMasterCurrent</code>, <code>SetDimSettings</code>, <code>DisplayDim</code></td>
+<td><code>kSetContrastA</code>, <code>kMasterCurrent</code>, <code>kDimMode</code></td>
+<td>Supported</td>
+<td>Table 10 - Command Table, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf#page=28">p. 28</a></td>
+</tr>
+<tr>
+<td>Power sequence</td>
+<td>Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on</td>
+<td><code>EnsureInitialized</code>, <code>DisplayOn</code>, <code>DisplayOff</code>, <code>Deinitialize</code>, <code>CtrlPin::VccEnable</code></td>
+<td><code>kDisplayOn</code>, <code>kDisplayOff</code>, <code>kMasterConfig</code></td>
+<td>Supported</td>
+<td>7.9, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf#page=27">p. 27</a></td>
+</tr>
+<tr>
+<td>Sleep</td>
+<td>Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press</td>
+<td><code>SetPowerSave</code>, <code>NotifyActivity</code></td>
+<td><code>kPowerSave</code></td>
+<td>Supported</td>
+<td>OLED Specifications, <a href="https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=2">p. 2</a></td>
+</tr>
+<tr>
+<td>Controller settings</td>
+<td>Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller</td>
+<td><code>SetRemap</code>, <code>SetStartLine</code>, <code>SetClock</code>, <code>SetGrayScaleTable</code>, <code>SetPrechargeLevel</code>, <code>SetVcomh</code></td>
+<td><code>kRemap</code>, <code>kClockDivider</code>, <code>kGrayScaleTable</code>, <code>kPrechargeLevel</code>, <code>kVcomh</code></td>
+<td>Supported</td>
+<td>9.1.6, <a href="https://cdn-shop.adafruit.com/datasheets/SSD1331_1.2.pdf#page=37">p. 37</a></td>
+</tr>
+<tr>
+<td>SPST switch</td>
+<td>Debounces the contact and reports press, release, long press and repeat events</td>
+<td><code>Poll</code>, <code>ReadSwitchRaw</code>, <code>SetButtonConfig</code>, <code>ButtonEvent</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Switch specifications (sheet E5), <a href="https://www.nkkswitches.com/pdf/ISF15ACP4_FramelessOLED.pdf#page=2">p. 2</a></td>
+</tr>
+<tr>
+<td>Smaller modules</td>
+<td>Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)</td>
+<td><code>PresetFor</code>, <code>HasSwitch</code>, <code>Variant</code></td>
+<td>-</td>
+<td>Supported</td>
+<td>Block diagram and pin configurations (sheet E6), <a href="https://www.nkkswitches.com/pdf/ISC15ANP4.pdf#page=3">p. 3</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supported</strong>: the driver covers it and a host test checks it.</p>
+<p>From <a href="hardware.yml"><code>docs/hardware.yml</code></a>; <code>kokeb-docs hardware --check</code> confirms that every API name is in
+<code>inc/isf15acp4.hpp</code>, <code>inc/isf15acp4_types.hpp</code>, <code>inc/isf15acp4_button.hpp</code>, <code>inc/isf15acp4_spi_interface.hpp</code> and every
+register in <code>inc/isf15acp4_registers.hpp</code>.</p>
+<!-- /generated -->
+
 <p>The driver has no platform code. You give it a small class that moves bytes on the SPI bus, drives three pins and
 waits; it does the rest: the power sequence, the controller's initialisation, pixel windows in three colour depths, the
 drawing engine, scrolling and the switch.</p>
-<div class="kb-chip">
-<div class="kb-chip__head">
-<span class="kb-chip__kicker">OLED pushbutton</span>
-<span class="kb-chip__name">ISF15ACP4</span>
-<span class="kb-chip__vendor">NKK Switches</span>
-</div>
-<dl>
-<dt>Display</dt>
-<dd>96 RGB x 64 pixels, passive matrix, 65 536 colours (a 256-colour mode is available)</dd>
-<dt>Interface</dt>
-<dd>Write-only SPI, mode 0, up to 6.6 MHz, with D/C#, RES# and CS#; there is no MISO</dd>
-<dt>Switch</dt>
-<dd>SPST normally open, two contacts on the module; debounce, press, release, long press and repeat in the driver</dd>
-<dt>Supply</dt>
-<dd>VDD 2.4 V to 3.5 V for the logic; VCC for the OLED 14 V to 16 V (ISC15ANP4 and ISC01P: 15 V to 17 V),
-external, enabled by the driver after the controller is configured</dd>
-<dt>Variants</dt>
-<dd>ISC15ANP4 (64 x 48) and ISC01P (52 x 36, no switch) as presets</dd>
-</dl>
-</div>
 <h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>A safe power sequence.</strong> The OLED supply is never enabled before the controller has been reset and configured,

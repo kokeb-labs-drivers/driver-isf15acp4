@@ -102,72 +102,6 @@
   <meta property="og:description" content="C++20 driver for the NKK ISF15ACP4 frameless OLED pushbutton: a 96RGB x 64 SSD1331-class OLED on write-only SPI and a debounced SPST switch.">
   <meta property="og:url" content="https://kokeb-labs-drivers.github.io/driver-isf15acp4/latest/diagrams/">
   <meta name="twitter:card" content="summary">
-  <script>
-(function () {
-  if (typeof mermaid != "undefined" && !(mermaid instanceof Element)) return;
-  var SRC = "https://unpkg.com/mermaid@11.17.2/dist/mermaid.min.js",
-      SRI = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2", config = {}, real, loading;
-  var waiting = [], io = null, ahead = false, ENGAGE = ["scroll", "keydown", "pointerdown", "touchstart"];
-  var stub = {
-    initialize: function (c) { config = c || {}; if (real) real.initialize(config); },
-    render: function (id, text) {
-      var el = null, pres = document.querySelectorAll("pre.mermaid:not([data-kb-mermaid])");
-      for (var i = 0; i < pres.length && !el; i++) if (pres[i].textContent === text) el = pres[i];
-      if (el) el.setAttribute("data-kb-mermaid", "");
-      return near(el).then(load).then(function (m) { return m.render(id, text); });
-    }
-  };
-  function load() {
-    return loading || (loading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = SRC;
-      s.integrity = SRI;
-      s.crossOrigin = "anonymous";
-      s.onload = function () {
-        real = window.mermaid;
-        window.mermaid = stub;
-        real.initialize(config);
-        resolve(real);
-      };
-      s.onerror = function () { loading = null; reject(new Error("Mermaid did not load")); };
-      document.head.appendChild(s);
-    }));
-  }
-  // One observer for the diagrams still waiting: on the screen only until the reader engages, then a screen ahead.
-  function watch() {
-    if (io) io.disconnect();
-    io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) release(function (w) { return w.el === e.target; });
-      });
-    }, { rootMargin: ahead ? "100% 0px" : "0px" });
-    waiting.forEach(function (w) { io.observe(w.el); });
-  }
-  function release(which) {
-    waiting = waiting.filter(function (w) {
-      if (!which(w)) return true;
-      io.unobserve(w.el);
-      w.go();
-      return false;
-    });
-  }
-  function near(el) {
-    if (real || !el || !("IntersectionObserver" in window)) return Promise.resolve();
-    return new Promise(function (resolve) {
-      waiting.push({ el: el, go: resolve });
-      if (io) io.observe(el); else watch();
-    });
-  }
-  function engaged() {
-    ENGAGE.forEach(function (t) { window.removeEventListener(t, engaged, true); });
-    ahead = true;
-    if (io) watch();
-  }
-  ENGAGE.forEach(function (t) { window.addEventListener(t, engaged, { capture: true, passive: true }); });
-  window.addEventListener("beforeprint", function () { if (io) release(function () { return true; }); });
-  window.mermaid = stub;
-})();
-</script>
 
   </head>
   
@@ -505,6 +439,8 @@
   
     
     
+      
+        
       
         
       
@@ -957,10 +893,43 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-the-isf15acp4-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the ISF15ACP4 does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#isf15acp4-typical-application" class="md-nav__link">
     <span class="md-ellipsis">
       
         ISF15ACP4: Typical application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isf15acp4-display-window-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISF15ACP4: Display window commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isf15acp4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ISF15ACP4
       
     </span>
   </a>
@@ -990,10 +959,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#wiring-typical-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring: Typical application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-layers-one-of-them-yours" class="md-nav__link">
     <span class="md-ellipsis">
       
         The layers, one of them yours
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-write-timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI write timing
       
     </span>
   </a>
@@ -1051,14 +1042,32 @@ committed figure no longer matches the code. Each figure below lists the files i
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The ISF15ACP4's function blocks inside its outline. Arrows between blocks carry signals or data in the direction they point (both ways where they have two heads). The package pins stand on the left and right edges with their numbers, each wired to the block it reaches.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
 </details>
 <p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
 <p>Drawn from:</p>
 <ul>
 <li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+</ul>
+<h2 id="what-the-isf15acp4-does">What the ISF15ACP4 does<a class="headerlink" href="#what-the-isf15acp4-does" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="chip-capabilities.svg#only-light" alt="Capability map of the ISF15ACP4: Colour display (supported): Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel; Drawing engine (supported): Draws lines and rectangles, copies, dims and clears a window with the controller&#x27;s own engine; Scrolling (supported): Scrolls a window of the display horizontally and vertically at a set speed; Contrast and current (supported): Sets the contrast of each colour, the master current and a dim mode; Power sequence (supported): Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on; Sleep (supported): Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press; Controller settings (supported): Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller; SPST switch (supported): Debounces the contact and reports press, release, long press and repeat events; Smaller modules (supported): Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)." width="1200" height="1036" loading="lazy"><img src="chip-capabilities.dark.svg#only-dark" alt="Capability map of the ISF15ACP4: Colour display (supported): Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel; Drawing engine (supported): Draws lines and rectangles, copies, dims and clears a window with the controller&#x27;s own engine; Scrolling (supported): Scrolls a window of the display horizontally and vertically at a set speed; Contrast and current (supported): Sets the contrast of each colour, the master current and a dim mode; Power sequence (supported): Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on; Sleep (supported): Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press; Controller settings (supported): Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller; SPST switch (supported): Debounces the contact and reports press, release, long press and repeat events; Smaller modules (supported): Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only)." width="1200" height="1036" loading="lazy">
+<figcaption>What the ISF15ACP4 does</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>Each card is one function of the ISF15ACP4: an icon, its name and what it does for the application. The filled pill says how this driver covers it (legend below); the outlined pills are the chip registers behind it. The coverage table in the README gives the driver calls and the datasheet section of each card.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
+<p>Drawn from:</p>
+<ul>
+<li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
 </ul>
 <h2 id="isf15acp4-typical-application">ISF15ACP4: Typical application<a class="headerlink" href="#isf15acp4-typical-application" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
@@ -1069,14 +1078,50 @@ committed figure no longer matches the code. Each figure below lists the files i
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>A schematic. The MCU is on the left, each of its pins level with the chip pin it connects to; above each wire is the hook of the driver's port that drives or reads it. Supply pins point up to their supply and decoupling, ground pins down. Pins on the right carry the loads and the pins tied to a supply or ground; a cross marks a pin left open. A dot is a junction; wires that cross without a dot are not connected.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
 </details>
 <p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
 <p>Drawn from:</p>
 <ul>
 <li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+</ul>
+<h2 id="isf15acp4-display-window-commands">ISF15ACP4: Display window commands<a class="headerlink" href="#isf15acp4-display-window-commands" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="chip-frame-window.svg#only-light" alt="Display window commands of the ISF15ACP4, 24 bits, most significant bit first. Column: 15h (bits 23 to 16), * (bit 15), start A6 to A0 (bits 14 to 8), * (bit 7), end B6 to B0 (bits 6 to 0); Row: 75h (bits 23 to 16), * * (bits 15 to 14), start A5 to A0 (bits 13 to 8), * * (bits 7 to 6), end B5 to B0 (bits 5 to 0)." width="1200" height="416" loading="lazy"><img src="chip-frame-window.dark.svg#only-dark" alt="Display window commands of the ISF15ACP4, 24 bits, most significant bit first. Column: 15h (bits 23 to 16), * (bit 15), start A6 to A0 (bits 14 to 8), * (bit 7), end B6 to B0 (bits 6 to 0); Row: 75h (bits 23 to 16), * * (bits 15 to 14), start A5 to A0 (bits 13 to 8), * * (bits 7 to 6), end B5 to B0 (bits 5 to 0)." width="1200" height="416" loading="lazy">
+<figcaption>ISF15ACP4: Display window commands</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>One Display window commands of the ISF15ACP4, 24 bits in a row from the most significant (left, sent first) to the least significant (right). Each row is one kind of frame; each coloured box a field, with its first and last bit number under it.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
+<p>Drawn from:</p>
+<ul>
+<li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+</ul>
+<h2 id="isf15acp4">ISF15ACP4<a class="headerlink" href="#isf15acp4" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="chip-hero.svg#only-light" alt="Overview of the ISF15ACP4, a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins. A MCU talks to it over SPI, write only; it drives Colour OLED; it reads back Switch. Headline figures: 96 RGB x 64 pixels in the cap; 65,536 colours in 16-bit mode; 1 million actuations at least; 50,000 h display life at least." width="1200" height="768" loading="lazy"><img src="chip-hero.dark.svg#only-dark" alt="Overview of the ISF15ACP4, a pushbutton with a 96 RGB x 64 colour OLED in its cap and a normally open switch under it: the display takes commands and pixels over a write-only SPI bus, the switch is a plain contact on two pins. A MCU talks to it over SPI, write only; it drives Colour OLED; it reads back Switch. Headline figures: 96 RGB x 64 pixels in the cap; 65,536 colours in 16-bit mode; 1 million actuations at least; 50,000 h display life at least." width="1200" height="768" loading="lazy">
+<figcaption>ISF15ACP4</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The ISF15ACP4 in the middle, drawn as its Module package. On the left the MCU that runs the driver, joined to it by SPI, write only. To the right, what the chip drives, in the order the power flows. Below it, what the chip reads back. The tiles at the bottom are the headline numbers, each with the datasheet section and page it comes from.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
+<p>Drawn from:</p>
+<ul>
+<li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
 </ul>
 <h2 id="isf15acp4-package-module">ISF15ACP4 package, Module<a class="headerlink" href="#isf15acp4-package-module" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
@@ -1087,14 +1132,14 @@ committed figure no longer matches the code. Each figure below lists the files i
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The ISF15ACP4 package seen from the top and, when the height is known, from the side, drawn to scale: 23.13 x 23.0 x 18.0 mm. The arrows carry the datasheet's dimensions, the dot marks pin 1 and the pads are numbered counter-clockwise from it, coloured by the pin's electrical type (legend below). Pads sit centred on each side at the stated pitch; the datasheet's land pattern is the reference for a board.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
 </details>
 <p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
 <p>Drawn from:</p>
 <ul>
 <li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
 </ul>
 <h2 id="isf15acp4-pinout-module">ISF15ACP4 pinout, Module<a class="headerlink" href="#isf15acp4-pinout-module" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
@@ -1105,14 +1150,32 @@ committed figure no longer matches the code. Each figure below lists the files i
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>The ISF15ACP4 seen from the top, in its Module package. Pin 1 is marked by the dot; the numbers run counter-clockwise from it. Each pad is coloured by the pin's electrical type (legend below). Next to it is the pin's name and, in mono, the hook of the driver's port that drives or reads it; a pin without a hook is not used by the driver.</p>
-<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
 </details>
 <p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
 <p>Drawn from:</p>
 <ul>
 <li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
-<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+</ul>
+<h2 id="wiring-typical-application">Wiring: Typical application<a class="headerlink" href="#wiring-typical-application" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="chip-wiring-typical.svg#only-light" alt="Wiring of the ISF15ACP4 for the Typical application: MCU SPI SCK to SCK (Write()); MCU SPI MOSI to SDI (Write()); MCU GPIO / CS to SS (Write()); MCU GPIO to DC (Write(DataKind)); MCU GPIO to RES (GpioSet(CtrlPin::Reset)); MCU GPIO (input) to SW1 (ReadSwitch()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1031" loading="lazy"><img src="chip-wiring-typical.dark.svg#only-dark" alt="Wiring of the ISF15ACP4 for the Typical application: MCU SPI SCK to SCK (Write()); MCU SPI MOSI to SDI (Write()); MCU GPIO / CS to SS (Write()); MCU GPIO to DC (Write(DataKind)); MCU GPIO to RES (GpioSet(CtrlPin::Reset)); MCU GPIO (input) to SW1 (ReadSwitch()). Supplies, grounds and the support parts are listed under the drawing." width="1200" height="1031" loading="lazy">
+<figcaption>Wiring: Typical application</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The MCU on the left, the ISF15ACP4 in the middle. Each wire to the chip is coloured by the chip pin's electrical type and carries the net name and the chip pin number above it and, under it, the driver hooks that use it (and any part on the net). The boxes underneath list the supplies, the support parts and the pins this circuit leaves unconnected.</p>
+<p>Drawn from: <a href="../hardware.yml"><code>docs/hardware.yml</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a>.</p>
+</details>
+<p>Hardware description: <a href="../hardware.yml"><code>docs/hardware.yml</code></a></p>
+<p>Drawn from:</p>
+<ul>
+<li><a href="../hardware.yml"><code>docs/hardware.yml</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
 </ul>
 <h2 id="the-layers-one-of-them-yours">The layers, one of them yours<a class="headerlink" href="#the-layers-one-of-them-yours" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
@@ -1123,13 +1186,29 @@ committed figure no longer matches the code. Each figure below lists the files i
 <details class="kb-figure-desc">
 <summary>Figure description and sources</summary>
 <p>Top to bottom, each arrow is a call. Your application calls one object, whose public calls are listed from the umbrella header in inc/. The core turns each call into register reads and writes and hands them to the port contract (the CRTP base in inc/*_interface.hpp), which forwards them, at compile time, to the hooks of the port class you write; your port moves the bytes on the bus. The notes on the right say which layers stay the same on every MCU and which one you write. A library without a port contract has only the first two layers.</p>
-<p>Drawn from: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a> <code>public calls</code>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a> <code>SpiInterface</code>; figure module <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
+<p>Drawn from: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a> <code>public calls</code>; <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a> <code>SpiInterface</code>; figure module <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a>.</p>
 </details>
-<p>Figure module: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a></p>
+<p>Figure module: <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/docs/diagrams/figures/driver-layers.py"><code>docs/diagrams/figures/driver-layers.py</code></a></p>
 <p>Drawn from:</p>
 <ul>
-<li><code>public calls</code> in <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
-<li><code>SpiInterface</code> in <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/f40995f6b03ad08f719bb684407d9dfbdb2be7df/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+<li><code>public calls</code> in <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4.hpp"><code>inc/isf15acp4.hpp</code></a></li>
+<li><code>SpiInterface</code> in <a href="https://github.com/kokeb-labs-drivers/driver-isf15acp4/blob/6a6513113ddbd2ccf85b44775b9174f22f730ec0/inc/isf15acp4_spi_interface.hpp"><code>inc/isf15acp4_spi_interface.hpp</code></a></li>
+</ul>
+<h2 id="spi-write-timing">SPI write timing<a class="headerlink" href="#spi-write-timing" title="Permanent link">&para;</a></h2>
+<figure class="kb-figure">
+<img src="spi-timing.svg#only-light" alt="SPI write timing of the ISF15ACP4&#x27;s SSD1331 controller in mode 0: CS# low frames one byte, D/C# selects command or data, and SDIN is read on each rising SCLK edge, most significant bit first, with the times of Table 21." width="640" height="1630" loading="lazy"><img src="spi-timing.dark.svg#only-dark" alt="SPI write timing of the ISF15ACP4&#x27;s SSD1331 controller in mode 0: CS# low frames one byte, D/C# selects command or data, and SDIN is read on each rising SCLK edge, most significant bit first, with the times of Table 21." width="640" height="1630" loading="lazy">
+<figcaption>SPI write timing</figcaption>
+</figure>
+
+<details class="kb-figure-desc">
+<summary>Figure description and sources</summary>
+<p>The four lanes are CS#, D/C#, SCLK and SDIN, left to right in time. CS# goes low, D/C# is low for a command byte or high for a data byte, SCLK idles low and the controller shifts SDIN in on each rising edge from D7 to D0; bits D4 and D3 are left out. The table gives each interval with its Table 21 value and the module's supply range.</p>
+<p>Drawn from: <a href="../model/spi-timing.timing.yml"><code>docs/model/spi-timing.timing.yml</code></a>.</p>
+</details>
+<p>Hardware description: <a href="../model/spi-timing.timing.yml"><code>docs/model/spi-timing.timing.yml</code></a></p>
+<p>Drawn from:</p>
+<ul>
+<li><a href="../model/spi-timing.timing.yml"><code>docs/model/spi-timing.timing.yml</code></a></li>
 </ul>
 <h2 id="from-start-up-to-a-drawn-rectangle">From start-up to a drawn rectangle<a class="headerlink" href="#from-start-up-to-a-drawn-rectangle" title="Permanent link">&para;</a></h2>
 <figure class="kb-figure">
