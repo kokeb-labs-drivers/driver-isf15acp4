@@ -115,6 +115,23 @@
       "inc/isf15acp4_spi_interface.hpp:SpiInterface"
     ]
   },
+  "spi-timing": {
+    "title": "SPI write timing",
+    "alt": "SPI write timing of the ISF15ACP4's SSD1331 controller in mode 0: CS# low frames one byte, D/C# selects command or data, and SDIN is read on each rising SCLK edge, most significant bit first, with the times of Table 21.",
+    "description": "The four lanes are CS#, D/C#, SCLK and SDIN, left to right in time. CS# goes low, D/C# is low for a command byte or high for a data byte, SCLK idles low and the controller shifts SDIN in on each rising edge from D7 to D0; bits D4 and D3 are left out. The table gives each interval with its Table 21 value and the module's supply range.",
+    "profile": "phone",
+    "width": 640,
+    "source": "docs/model/spi-timing.timing.yml",
+    "sources": [
+      "docs/model/spi-timing.timing.yml"
+    ],
+    "kind": "timing",
+    "palette": 2,
+    "print": "landscape",
+    "adaptive": true,
+    "twin": true,
+    "font": ""
+  },
   "start-up-and-draw": {
     "title": "From start-up to a drawn rectangle",
     "alt": "From start-up to a drawn rectangle: initialisation powers and resets the display and clears its memory, DisplayOn raises the panel supply and sends the display-on command, and DrawRectangle sends one drawing command.",

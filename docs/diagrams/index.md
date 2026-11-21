@@ -194,6 +194,24 @@ Drawn from:
 - `public calls` in [`inc/isf15acp4.hpp`](../../inc/isf15acp4.hpp)
 - `SpiInterface` in [`inc/isf15acp4_spi_interface.hpp`](../../inc/isf15acp4_spi_interface.hpp)
 
+## SPI write timing
+
+<!-- figure: spi-timing -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="spi-timing.dark.svg">
+  <img src="spi-timing.svg"
+    alt="SPI write timing of the ISF15ACP4's SSD1331 controller in mode 0: CS# low frames one byte, D/C#
+    selects command or data, and SDIN is read on each rising SCLK edge, most significant bit first, with
+    the times of Table 21.">
+</picture>
+<!-- /figure -->
+
+Hardware description: [`docs/model/spi-timing.timing.yml`](../model/spi-timing.timing.yml)
+
+Drawn from:
+
+- [`docs/model/spi-timing.timing.yml`](../model/spi-timing.timing.yml)
+
 ## From start-up to a drawn rectangle
 
 <!-- figure: start-up-and-draw -->
