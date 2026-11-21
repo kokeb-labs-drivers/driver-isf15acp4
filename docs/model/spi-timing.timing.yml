@@ -1,0 +1,54 @@
+---
+kind: timing
+id: spi-timing
+title: SPI write timing
+kicker: On the bus
+alt: >-
+  SPI write timing of the ISF15ACP4's SSD1331 controller in mode 0: CS# low frames one byte, D/C# selects command or
+  data, and SDIN is read on each rising SCLK edge, most significant bit first, with the times of Table 21.
+reads: >-
+  The four lanes are CS#, D/C#, SCLK and SDIN, left to right in time. CS# goes low, D/C# is low for a command byte or
+  high for a data byte, SCLK idles low and the controller shifts SDIN in on each rising edge from D7 to D0; bits D4
+  and D3 are left out. The table gives each interval with its Table 21 value and the module's supply range.
+bus: spi
+mode: {cpol: 0, cpha: 0}
+refs:
+  spi: {doc: ctl, section: "7.1.3 Serial Interface", page: 17}
+  timing: {doc: ctl, section: "12 AC Characteristics, Table 21", page: 57}
+  supply: {doc: ds, section: "Recommended operating conditions (sheets E5, E7)", page: 2}
+  sck: {doc: notes, section: "Design Considerations 2 and 5", page: 1}
+signals:
+  - {id: cs, label: CS#, wave: "10.........1."}
+  - {id: dc, label: D/C#, wave: "x=.........x.", data: ["low: command, high: data"], tone: teal}
+  - {id: sclk, label: SCLK, wave: "0..nnn|nnn0..", clock: true}
+  - {id: sdin, label: SDIN, wave: "x..===|===x..", data: [D7, D6, D5, D2, D1, D0]}
+groups:
+  - {from: 3, to: 10, label: "8 bits, MSB first", ref: spi}
+params:
+  - {id: tcss, symbol: tCSS, label: Chip select setup time, min: 75, unit: ns, ref: timing}
+  - {id: tcsh, symbol: tCSH, label: Chip select hold time, min: 60, unit: ns, ref: timing}
+  - {id: tas, symbol: tAS, label: "Address (D/C#) setup time", min: 40, unit: ns, ref: timing}
+  - {id: tah, symbol: tAH, label: "Address (D/C#) hold time", min: 40, unit: ns, ref: timing}
+  - {id: tcycle, symbol: tcycle, label: Clock cycle time, min: 150, unit: ns, ref: timing}
+  - {id: tclkl, symbol: tCLKL, label: Clock low time, min: 75, unit: ns, ref: timing}
+  - {id: tclkh, symbol: tCLKH, label: Clock high time, min: 75, unit: ns, ref: timing}
+  - {id: tdsw, symbol: tDSW, label: Write data setup time, min: 40, unit: ns, ref: timing}
+  - {id: tdhw, symbol: tDHW, label: Write data hold time, min: 40, unit: ns, ref: timing}
+  - {id: trf, symbol: tR/tF, label: Rise and fall time, max: 15, unit: ns, ref: timing}
+  - {id: vdd, symbol: VDD, label: "Logic supply of the module, recommended operating range", min: 2.4, typ: 2.8,
+     max: 3.5, unit: V, ref: supply}
+marks:
+  - {param: tcss, signal: cs, from: 1, to: 3.5}
+  - {param: tcsh, signal: cs, from: 9.5, to: 11}
+  - {param: tas, signal: dc, from: 1, to: 3.5}
+  - {param: tah, signal: dc, from: 9.5, to: 11}
+  - {param: tcycle, signal: sclk, from: 3, to: 4}
+  - {param: tclkl, signal: sclk, from: 7, to: 7.5}
+  - {param: tclkh, signal: sclk, from: 7.5, to: 8}
+  - {param: tdsw, signal: sdin, from: 4, to: 4.5}
+  - {param: tdhw, signal: sdin, from: 4.5, to: 5}
+notes:
+  - {text: "Table 21 holds for VDD 2.4 V to 3.5 V at 25 °C.", ref: timing}
+  - {text: "D/C# is sampled on every eighth clock; the serial interface is write-only.", ref: spi}
+  - {text: "NKK's notes give 6.6 MHz as the SCK limit of the module.", ref: sck}
+  - {text: "Inputs: high at least 0.8 x VDD, low at most 0.2 x VDD.", ref: supply}

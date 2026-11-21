@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1036" viewBox="0 0 1200 1036" role="img" aria-labelledby="chip-capabilities-title chip-capabilities-desc" font-family="Inter, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<title id="chip-capabilities-title">What the ISF15ACP4 does</title>
+<desc id="chip-capabilities-desc">Capability map of the ISF15ACP4: Colour display (supported): Writes windows, single pixels and whole frames in 65,536 or 256 colours on the 96 x 64 panel; Drawing engine (supported): Draws lines and rectangles, copies, dims and clears a window with the controller's own engine; Scrolling (supported): Scrolls a window of the display horizontally and vertically at a set speed; Contrast and current (supported): Sets the contrast of each colour, the master current and a dim mode; Power sequence (supported): Resets and configures the controller with the 15 V supply off, then enables it and turns the panel on; Sleep (supported): Puts the display to sleep, 10 µA at most on each supply, and wakes it on the next press; Controller settings (supported): Remap, start line, clock, phase periods, gray scale table, pre-charge and VCOMH of the controller; SPST switch (supported): Debounces the contact and reports press, release, long press and repeat events; Smaller modules (supported): Presets for the ISC15ANP4 (64 x 48, with switch) and ISC01P (52 x 36, display only).</desc>
+<rect x="0.5" y="0.5" width="1199" height="1035" rx="16" fill="#0E131A" stroke="#283241"/>
+<text x="32" y="46.8" font-size="16" font-weight="700" letter-spacing="1.2" fill="#F8D27A">CAPABILITIES</text>
+<text x="32" y="85.6" font-size="32" font-weight="700" fill="#E8EDF3">What the ISF15ACP4 does</text>
+<text x="32" y="115.4" font-size="18" fill="#9AA6B5">One card per function of the chip, with how this driver covers it and the registers behind it.</text>
+<rect x="32" y="131.4" width="1136" height="1" fill="#252F3C"/>
+<rect x="32" y="149.4" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="417.3" y="149.4" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="802.7" y="149.4" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="32" y="419.3" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="417.3" y="419.3" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="802.7" y="419.3" width="365.3" height="249.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="32" y="689.3" width="365.3" height="283.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="417.3" y="689.3" width="365.3" height="283.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<rect x="802.7" y="689.3" width="365.3" height="283.9" rx="12" fill="#151C26" stroke="#3A4657" stroke-width="1"/>
+<circle cx="78" cy="195.4" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<circle cx="78" cy="192.5" r="8.7" fill="none" stroke="#F4B942" stroke-width="2.5"/>
+<path d="M74.4 203.4 L81.6 203.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M75.8 207.7 L80.2 207.7" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="120" y="201.4" font-size="20" font-weight="700" fill="#E8EDF3">Colour display</text>
+<text x="50" y="249.8" font-size="17" fill="#D2DAE4">Writes windows, single pixels and</text>
+<text x="50" y="274.5" font-size="17" fill="#D2DAE4">whole frames in 65,536 or 256</text>
+<text x="50" y="299.1" font-size="17" fill="#D2DAE4">colours on the 96 x 64 panel</text>
+<rect x="50" y="317.7" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="58" y="335.8" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="161.4" y="317.7" width="187.5" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="169.4" y="335.8" font-size="16" font-weight="700" fill="#E2E8F0">kSetColumnAddress</text>
+<rect x="50" y="351.7" width="159.3" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="58" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kSetRowAddress</text>
+<rect x="217.3" y="351.7" width="83.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="225.3" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kRemap</text>
+<circle cx="463.3" cy="195.4" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M450.3 195.4 L459 195.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M459 186.7 L459 204.1" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M463.3 186.7 L463.3 204.1" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M463.3 189.6 L474.9 189.6 L474.9 182.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M463.3 201.2 L474.9 201.2 L474.9 208.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="505.3" y="201.4" font-size="20" font-weight="700" fill="#E8EDF3">Drawing engine</text>
+<text x="435.3" y="249.8" font-size="17" fill="#D2DAE4">Draws lines and rectangles, copies,</text>
+<text x="435.3" y="274.5" font-size="17" fill="#D2DAE4">dims and clears a window with the</text>
+<text x="435.3" y="299.1" font-size="17" fill="#D2DAE4">controller's own engine</text>
+<rect x="435.3" y="317.7" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="443.3" y="335.8" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="546.7" y="317.7" width="104.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="554.7" y="335.8" font-size="16" font-weight="700" fill="#E2E8F0">kDrawLine</text>
+<rect x="435.3" y="351.7" width="152.5" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="443.3" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kDrawRectangle</text>
+<rect x="595.8" y="351.7" width="69.7" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="603.8" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kCopy</text>
+<rect x="673.5" y="351.7" width="85.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="681.5" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">+2 more</text>
+<circle cx="848.7" cy="195.4" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M848.7 185.3 A10.1 10.1 0 0 1 858.8 195.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M858.8 195.4 A10.1 10.1 0 0 1 848.7 205.5" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M848.7 205.5 A10.1 10.1 0 0 1 838.5 195.4" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M834.9 191.8 L838.5 196.1 L842.6 192.2" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="890.7" y="201.4" font-size="20" font-weight="700" fill="#E8EDF3">Scrolling</text>
+<text x="820.7" y="249.8" font-size="17" fill="#D2DAE4">Scrolls a window of the display</text>
+<text x="820.7" y="274.5" font-size="17" fill="#D2DAE4">horizontally and vertically at a set</text>
+<text x="820.7" y="299.1" font-size="17" fill="#D2DAE4">speed</text>
+<rect x="820.7" y="317.7" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="828.7" y="335.8" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="932" y="317.7" width="122.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="940" y="335.8" font-size="16" font-weight="700" fill="#E2E8F0">kScrollSetup</text>
+<rect x="820.7" y="351.7" width="97.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="828.7" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kScrollOn</text>
+<rect x="925.7" y="351.7" width="100" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="933.7" y="369.8" font-size="16" font-weight="700" fill="#E2E8F0">kScrollOff</text>
+<circle cx="78" cy="465.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M66.4 471.1 A11.6 11.6 0 0 1 89.6 471.1" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78 471.1 L84.5 462.5" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="78" cy="471.1" r="2.6" fill="#F4B942"/>
+<path d="M65 476.2 L91 476.2" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="120" y="471.3" font-size="20" font-weight="700" fill="#E8EDF3">Contrast and current</text>
+<text x="50" y="519.8" font-size="17" fill="#D2DAE4">Sets the contrast of each colour, the</text>
+<text x="50" y="544.4" font-size="17" fill="#D2DAE4">master current and a dim mode</text>
+<rect x="50" y="563" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="58" y="581.1" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="161.4" y="563" width="138.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="169.4" y="581.1" font-size="16" font-weight="700" fill="#E2E8F0">kSetContrastA</text>
+<rect x="50" y="597" width="148" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="58" y="615.1" font-size="16" font-weight="700" fill="#E2E8F0">kMasterCurrent</text>
+<rect x="206" y="597" width="105.2" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="214" y="615.1" font-size="16" font-weight="700" fill="#E2E8F0">kDimMode</text>
+<circle cx="463.3" cy="465.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M465.5 452.3 L454.7 467.5 L462.6 467.5 L461.2 478.4 L472 463.2 L464.1 463.2 Z" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="505.3" y="471.3" font-size="20" font-weight="700" fill="#E8EDF3">Power sequence</text>
+<text x="435.3" y="519.8" font-size="17" fill="#D2DAE4">Resets and configures the controller</text>
+<text x="435.3" y="544.4" font-size="17" fill="#D2DAE4">with the 15 V supply off, then enables</text>
+<text x="435.3" y="569.1" font-size="17" fill="#D2DAE4">it and turns the panel on</text>
+<rect x="435.3" y="587.6" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="443.3" y="605.8" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="546.7" y="587.6" width="111.2" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="554.7" y="605.8" font-size="16" font-weight="700" fill="#E2E8F0">kDisplayOn</text>
+<rect x="435.3" y="621.6" width="114.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="443.3" y="639.8" font-size="16" font-weight="700" fill="#E2E8F0">kDisplayOff</text>
+<rect x="557.4" y="621.6" width="139.8" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="565.4" y="639.8" font-size="16" font-weight="700" fill="#E2E8F0">kMasterConfig</text>
+<circle cx="848.7" cy="465.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M851.6 453.8 A11.6 11.6 0 0 0 851.6 476.9" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M851.6 476.9 A9.4 9.4 0 0 1 851.6 453.8" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="890.7" y="471.3" font-size="20" font-weight="700" fill="#E8EDF3">Sleep</text>
+<text x="820.7" y="519.8" font-size="17" fill="#D2DAE4">Puts the display to sleep, 10 µA at</text>
+<text x="820.7" y="544.4" font-size="17" fill="#D2DAE4">most on each supply, and wakes it on</text>
+<text x="820.7" y="569.1" font-size="17" fill="#D2DAE4">the next press</text>
+<rect x="820.7" y="587.6" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="828.7" y="605.8" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="932" y="587.6" width="119.9" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="940" y="605.8" font-size="16" font-weight="700" fill="#E2E8F0">kPowerSave</text>
+<circle cx="78" cy="735.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M66.4 728.1 L89.6 728.1" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="73.7" cy="728.1" r="3.2" fill="none" stroke="#F4B942" stroke-width="2.5"/>
+<path d="M66.4 735.3 L89.6 735.3" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="82.3" cy="735.3" r="3.2" fill="none" stroke="#F4B942" stroke-width="2.5"/>
+<path d="M66.4 742.5 L89.6 742.5" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="71.5" cy="742.5" r="3.2" fill="none" stroke="#F4B942" stroke-width="2.5"/>
+<text x="120" y="741.3" font-size="20" font-weight="700" fill="#E8EDF3">Controller settings</text>
+<text x="50" y="789.8" font-size="17" fill="#D2DAE4">Remap, start line, clock, phase</text>
+<text x="50" y="814.4" font-size="17" fill="#D2DAE4">periods, gray scale table, pre-charge</text>
+<text x="50" y="839" font-size="17" fill="#D2DAE4">and VCOMH of the controller</text>
+<rect x="50" y="857.6" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="58" y="875.7" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="161.4" y="857.6" width="83.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="169.4" y="875.7" font-size="16" font-weight="700" fill="#E2E8F0">kRemap</text>
+<rect x="50" y="891.6" width="132.5" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="58" y="909.7" font-size="16" font-weight="700" fill="#E2E8F0">kClockDivider</text>
+<rect x="190.5" y="891.6" width="157.7" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="198.5" y="909.7" font-size="16" font-weight="700" fill="#E2E8F0">kGrayScaleTable</text>
+<rect x="50" y="925.6" width="85.1" height="26" rx="13" fill="#1B232E" stroke="#3A4656" stroke-width="1"/>
+<text x="58" y="943.7" font-size="16" font-weight="700" fill="#E2E8F0">+2 more</text>
+<circle cx="463.3" cy="735.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M448.9 739.6 L456.1 739.6" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="456.1" cy="739.6" r="2.3" fill="#F4B942"/>
+<path d="M456.1 739.6 L469.1 729.5" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="470.6" cy="739.6" r="2.3" fill="#F4B942"/>
+<path d="M470.6 739.6 L477.8 739.6" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="505.3" y="741.3" font-size="20" font-weight="700" fill="#E8EDF3">SPST switch</text>
+<text x="435.3" y="789.8" font-size="17" fill="#D2DAE4">Debounces the contact and reports</text>
+<text x="435.3" y="814.4" font-size="17" fill="#D2DAE4">press, release, long press and repeat</text>
+<text x="435.3" y="839" font-size="17" fill="#D2DAE4">events</text>
+<rect x="435.3" y="857.6" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="443.3" y="875.7" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<circle cx="848.7" cy="735.3" r="28" fill="#2A2113" stroke="#6B5424" stroke-width="1.2"/>
+<path d="M837.1 723.7 L848.7 723.7 L860.2 735.3 L848.7 746.9 L837.1 735.3 Z" fill="none" stroke="#F4B942" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="843.6" cy="730.2" r="2.3" fill="#F4B942"/>
+<text x="890.7" y="741.3" font-size="20" font-weight="700" fill="#E8EDF3">Smaller modules</text>
+<text x="820.7" y="789.8" font-size="17" fill="#D2DAE4">Presets for the ISC15ANP4 (64 x 48,</text>
+<text x="820.7" y="814.4" font-size="17" fill="#D2DAE4">with switch) and ISC01P (52 x 36,</text>
+<text x="820.7" y="839" font-size="17" fill="#D2DAE4">display only)</text>
+<rect x="820.7" y="857.6" width="103.4" height="26" rx="13" fill="#BBF7D0"/>
+<text x="828.7" y="875.7" font-size="16" font-weight="700" fill="#0E131A">Supported</text>
+<rect x="32" y="985.6" width="14" height="14" rx="4" fill="#11281A" stroke="#4ADE80" stroke-width="1.4"/>
+<text x="54" y="1000.2" font-size="16" fill="#9AA6B5">Supported: the driver covers it and a host test checks it</text>
+</svg>

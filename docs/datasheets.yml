@@ -113,7 +113,7 @@ topics:
     section: Recommended operating conditions (sheets E5, E7)
     page: 2
     driver: "`EnsureInitialized()`, `DisplayOn()`, `DisplayOff()`, `Deinitialize()`, `IsSupplyEnabled()`"
-    docs: [hardware, contract, architecture]
+    docs: [hardware, contract, architecture, bus]
   - topic: Switch circuit and contact data
     doc: ds
     section: Switch specifications (sheet E5)
@@ -125,13 +125,13 @@ topics:
     section: 7.1.3 Serial Interface
     page: 17
     driver: "`SpiInterface`, `SpiPort`, `DataKind`, `kSpiMode`, `kMsbFirst`, `kContinuousWord`"
-    docs: [hardware, porting, architecture, limitations]
+    docs: [hardware, porting, architecture, limitations, bus]
   - topic: Serial interface timing
     doc: ctl
     section: 12 AC Characteristics, Table 21
     page: 57
     driver: "`kMaxClockHz`, `kCsSetupNs`, `kCsHoldNs`, `kDcSetupNs`, `kDcHoldNs`"
-    docs: [hardware, porting]
+    docs: [hardware, porting, bus]
   - topic: Reset circuit and reset pulse
     doc: ctl
     section: 7.4 Reset Circuit; 12 AC Characteristics, Table 18
@@ -251,7 +251,7 @@ topics:
     section: Design Considerations 2 and 5
     page: 1
     driver: "`SpiInterface`, `kMaxClockHz`, `Write()`"
-    docs: [hardware, porting, ambiguities]
+    docs: [hardware, porting, ambiguities, bus]
   - topic: Memory window of each module
     doc: notes
     section: Specifying a Memory Window for Downloading
