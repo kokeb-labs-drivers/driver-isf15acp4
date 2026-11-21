@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['samebuttonconfig_0',['SameButtonConfig',['../group__isf15acp4__types.html#ga5f41ddb86c1571662120882b9cd848c7',1,'isf15acp4']]],
+  ['setbuttonconfig_1',['SetButtonConfig',['../classisf15acp4_1_1ISF15ACP4.html#a798ae804ec0c261679b92b9f225012eb',1,'isf15acp4::ISF15ACP4']]],
+  ['setclock_2',['SetClock',['../classisf15acp4_1_1ISF15ACP4.html#ac63c34d11f85dfd468aa3b322859e8e4',1,'isf15acp4::ISF15ACP4']]],
+  ['setcommandlock_3',['SetCommandLock',['../classisf15acp4_1_1ISF15ACP4.html#a2436f19db416b4510c652130ba103a1d',1,'isf15acp4::ISF15ACP4']]],
+  ['setcontrast_4',['SetContrast',['../classisf15acp4_1_1ISF15ACP4.html#a4cba1651ac2e3de8c33bf11885115b42',1,'isf15acp4::ISF15ACP4']]],
+  ['setdimsettings_5',['SetDimSettings',['../classisf15acp4_1_1ISF15ACP4.html#a5cb19a83dc3f34c2d6517017c82c8f2d',1,'isf15acp4::ISF15ACP4']]],
+  ['setdisplaymode_6',['SetDisplayMode',['../classisf15acp4_1_1ISF15ACP4.html#a634b26b04110ed191156ee287b3d44e2',1,'isf15acp4::ISF15ACP4']]],
+  ['setdisplayoffset_7',['SetDisplayOffset',['../classisf15acp4_1_1ISF15ACP4.html#a17c3ea6feaa361df1f89f5fc467f2b74',1,'isf15acp4::ISF15ACP4']]],
+  ['setgrayscaletable_8',['SetGrayScaleTable',['../classisf15acp4_1_1ISF15ACP4.html#ac6c4afd0fa708364147087b6778d2414',1,'isf15acp4::ISF15ACP4']]],
+  ['setmastercurrent_9',['SetMasterCurrent',['../classisf15acp4_1_1ISF15ACP4.html#a614d100db822ac4365f9bf70c0f7f6ee',1,'isf15acp4::ISF15ACP4']]],
+  ['setmultiplexratio_10',['SetMultiplexRatio',['../classisf15acp4_1_1ISF15ACP4.html#a49009152d14e445b4f317289671446be',1,'isf15acp4::ISF15ACP4']]],
+  ['setphaseperiods_11',['SetPhasePeriods',['../classisf15acp4_1_1ISF15ACP4.html#a358d2f68f2d2fc075469954c3a162c65',1,'isf15acp4::ISF15ACP4']]],
+  ['setpixel_12',['SetPixel',['../classisf15acp4_1_1ISF15ACP4.html#a5383a47099e0e3bc620f6bbf7b97a320',1,'isf15acp4::ISF15ACP4']]],
+  ['setpowersave_13',['SetPowerSave',['../classisf15acp4_1_1ISF15ACP4.html#a4345d9a30e86c5346dc723472acb378c',1,'isf15acp4::ISF15ACP4']]],
+  ['setprechargelevel_14',['SetPrechargeLevel',['../classisf15acp4_1_1ISF15ACP4.html#ac6a9ecfb09afa6bfeeb9b3e4a084474e',1,'isf15acp4::ISF15ACP4']]],
+  ['setprechargespeed_15',['SetPrechargeSpeed',['../classisf15acp4_1_1ISF15ACP4.html#a6e049e9e877db4dbbea7235013b1fa46',1,'isf15acp4::ISF15ACP4']]],
+  ['setremap_16',['SetRemap',['../classisf15acp4_1_1ISF15ACP4.html#a8cec1a6a47965a12f35963a33a1ef2b5',1,'isf15acp4::ISF15ACP4']]],
+  ['setstartline_17',['SetStartLine',['../classisf15acp4_1_1ISF15ACP4.html#aeb67986a5f10e4136e7133b8b4b18a49',1,'isf15acp4::ISF15ACP4']]],
+  ['setupscroll_18',['SetupScroll',['../classisf15acp4_1_1ISF15ACP4.html#ac65aaf09b49692a36327ff77079742a2',1,'isf15acp4::ISF15ACP4']]],
+  ['setvcomh_19',['SetVcomh',['../classisf15acp4_1_1ISF15ACP4.html#a812ad5a151e995878636a8649f70a794',1,'isf15acp4::ISF15ACP4']]],
+  ['spiinterface_20',['spiinterface',['../classisf15acp4_1_1SpiInterface.html#a420ef85f2536a6d83b2ffd537021b031',1,'isf15acp4::SpiInterface::SpiInterface(const SpiInterface &amp;)=delete'],['../classisf15acp4_1_1SpiInterface.html#aeb02cfcdda905c7648c0d475cc0ec19f',1,'isf15acp4::SpiInterface::SpiInterface() noexcept=default']]],
+  ['split_21',['Split',['../group__isf15acp4__types.html#ga72da1bcc02ab361f546671ea8d3aae7f',1,'isf15acp4']]],
+  ['success_22',['success',['../structisf15acp4_1_1Result.html#a3e764c2596b7c35ba436fd093d1679d6',1,'isf15acp4::Result::Success()'],['../structisf15acp4_1_1Result_3_01void_01_4.html#ac6c22723ac9002e8f9a58d0a67e429bf',1,'isf15acp4::Result&lt; void &gt;::Success()']]]
+];
